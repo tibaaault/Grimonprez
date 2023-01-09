@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 <html lang="en">
   <head>
@@ -37,12 +37,11 @@ include "entete.php";
 
     <!-- Fin barre de recherche -->
 
-    <?php 
-    //Requete bdd 
+    <?php
+//Requete bdd
 $ligne = "SELECT * FROM Questions ORDER BY id ASC";
 $result = mysqli_query($db, $ligne);
-$selectId = "SELECT id FROM Question WHERE id = $i";
-$resultId = mysqli_query($db, $resultId);
+
 ?>
 <!-- Début accordéon (main) -->
 <div class="container" style="font-family: robotothin">
@@ -50,16 +49,17 @@ $resultId = mysqli_query($db, $resultId);
 
 <!-- Début boucle pour afficher chaque question -->
 <?php
-$i=1;
+$i = 1;
 while ($resultat = mysqli_fetch_array($result)) {
-  // if ($i = $resultId){
-  // Définir la question et l'id dans des variables pour ensuite les récupérer dans le fichier formulaireAjout.php
-  $uneQuestion = $resultat['question'];
-    $_SESSION['laQuestion']= $uneQuestion;
-    $unId = $i;
-    $_SESSION['id'] = $unId;
-  
-  ?>
+    // if ($i = $resultId){
+    // Définir la question et l'id dans des variables pour ensuite les récupérer dans le fichier formulaireAjout.php
+    $uneQuestion = $resultat['question'];
+    $selectId = "SELECT id, question FROM Question WHERE question = $uneQuestion";
+    $resultId = mysqli_query($db, $resultId);
+    $_SESSION['id'] = $resultId;
+   
+    
+    ?>
   <!-- 1 Module Accordéon-->
 <div class="accordion-item">
   <h2 class="accordion-header" id="heading<?php echo $i; ?>">
@@ -68,48 +68,53 @@ while ($resultat = mysqli_fetch_array($result)) {
       type="button"
       data-mdb-toggle="collapse"
       data-mdb-target="#collapse<?php echo $i; ?>"
-      aria-expanded="<?php echo ($i==1)? 'true': 'false'; ?>"
+      aria-expanded="<?php echo ($i == 1) ? 'true' : 'false'; ?>"
       aria-controls="collapse<?php echo $i; ?>"
     >
     <?php
     echo $uneQuestion;
-    echo $unId
-?>
+    echo $unId;
+    echo $resultId;
+    ?>
 <!-- Ligne îcone -->
 <?php
-    if ($resultat['reponse']) { 
-      echo '<i style="color:green" class="fas fa-check fa-lg ms-2"></i>';
-      }
-    else {
-      echo '<i style="color:red" class="fas fa-times fa-lg ms-2"></i>';
+if ($resultat['reponse']) {
+        echo '<i style="color:green" class="fas fa-check fa-lg ms-2"></i>';
+    } else {
+        echo '<i style="color:red" class="fas fa-times fa-lg ms-2"></i>';
     }
-   ?>
+    ?>
 <!-- Fin lignes îcone -->
     </button>
   </h2>
-  <div id="collapse<?php echo $i; ?>" class="accordion-collapse collapse <?php if($i==1) echo 'show'; ?>" aria-labelledby="heading<?php echo $i; ?>" data-mdb-parent="#accordionExample">
+  <div id="collapse<?php echo $i; ?>" class="accordion-collapse collapse <?php if ($i == 1) {
+        echo 'show';
+    }
+    ?>" aria-labelledby="heading<?php echo $i; ?>" data-mdb-parent="#accordionExample">
     <div class="accordion-body">
     <!-- Si le résultat à une réponse et un prénom, alors afficher les deux + le bouton -->
     <?php
-    if ($resultat['reponse']) { 
-      if ($resultat['prenom']) {
-        echo "Prénom : " . $resultat['prenom'] . "<br>"; 
-      }
-      // Si le résultat a une réponse mais pas de prénom, afficher la réponse + le bouton
-      echo $resultat['reponse']; 
-      echo '<br><br><a href="formulaireAjout.php"><input type="submit" name="boutonReponse" class="btn btn-primary" value="Ajouter une réponse"></input></a>';
-      }
-      // Si le résultat n'a pas de réponse, afficher juste le bouton
-    else {
-      echo '<a href="formulaireAjout.php"><input type="submit" name="boutonReponse" class="btn btn-primary" value="Ajouter une réponse"></input></a>';
+    
+
+if ($resultat['reponse']) {
+        if ($resultat['prenom']) {
+            echo "Prénom : " . $resultat['prenom'] . "<br>";
+        }
+        // Si le résultat a une réponse mais pas de prénom, afficher la réponse + le bouton
+        echo $resultat['reponse'];
+        echo '<br><br><a href="formulaireAjout.php"><input type="submit" name="boutonReponse" class="btn btn-primary" value="Ajouter une réponse"></input></a>';
     }
-   ?>
+    // Si le résultat n'a pas de réponse, afficher juste le bouton
+    else {
+        echo '<a href="formulaireAjout.php"><input type="submit" name="boutonReponse" class="btn btn-primary" value="Ajouter une réponse"></input></a>';
+    }
+    ?>
     </div>
   </div>
 </div>
-<?php 
+<?php
 $i++;
-}  
+}
 ?>
 
     <!--Fin du module -->
