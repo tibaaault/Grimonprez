@@ -12,8 +12,10 @@ include_once "../controleur/bddConnect.php";
 include "entete.php";
 
 //Récupérer l'id et la question du fichier question.php
-$unId = $_SESSION['id'];
-$laQuestion = $_SESSION['laQuestion'];
+$idURL = $_GET['id'];
+$recupQuestion = "SELECT question FROM Questions WHERE id=$idURL";
+echo $recupQuestion;
+$reqQuestion = mysqli_connect($db, $recupQuestion);
 ?>
     <div class="container-fluid">
       <div class="col-xl-8 col-xs-12 mx-auto text-center border border-2 border-dark p-3">
@@ -23,7 +25,7 @@ $laQuestion = $_SESSION['laQuestion'];
             <br>
           <?php
 //Afficher la question dans le fichier question.php
-echo $laQuestion;
+  echo $reqQuestion;
 ?>
           </p>
           <br />

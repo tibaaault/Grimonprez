@@ -54,10 +54,7 @@ while ($resultat = mysqli_fetch_array($result)) {
     // if ($i = $resultId){
     // Définir la question et l'id dans des variables pour ensuite les récupérer dans le fichier formulaireAjout.php
     $uneQuestion = $resultat['question'];
-    $selectId = "SELECT id, question FROM Question WHERE question = $uneQuestion";
-    $resultId = mysqli_query($db, $resultId);
-    $_SESSION['id'] = $resultId;
-   
+    
     
     ?>
   <!-- 1 Module Accordéon-->
@@ -73,8 +70,8 @@ while ($resultat = mysqli_fetch_array($result)) {
     >
     <?php
     echo $uneQuestion;
-    echo $unId;
-    echo $resultId;
+    $idQuestion = $resultat['id']; 
+    echo $resultat['id'];
     ?>
 <!-- Ligne îcone -->
 <?php
@@ -102,12 +99,14 @@ if ($resultat['reponse']) {
         }
         // Si le résultat a une réponse mais pas de prénom, afficher la réponse + le bouton
         echo $resultat['reponse'];
-        echo '<br><br><a href="formulaireAjout.php"><input type="submit" name="boutonReponse" class="btn btn-primary" value="Ajouter une réponse"></input></a>';
+        ?> <br><br><a href="formulaireAjout.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="btn btn-primary" value="Ajouter une réponse"></input></a>
+        <?php
     }
     // Si le résultat n'a pas de réponse, afficher juste le bouton
     else {
-        echo '<a href="formulaireAjout.php"><input type="submit" name="boutonReponse" class="btn btn-primary" value="Ajouter une réponse"></input></a>';
-    }
+        ?><a href="formulaireAjout.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="btn btn-primary" value="Ajouter une réponse"></input></a>
+  <?php  
+  }
     ?>
     </div>
   </div>
