@@ -13,11 +13,17 @@ include "entete.php";
 
 //Récupérer l'id et la question du fichier question.php
 $idURL = $_GET['id'];
+
+// Recuperer la question grâce à l'id de l'url
 $ligneQuestion = "SELECT question FROM Questions WHERE id=$idURL";
-$ligneReponse = "SELECT reponse FROM Questions WHERE id=$idURL";
 $reqQuestion = mysqli_query($db, $ligneQuestion);
-$reqReponse = mysqli_query($db, $ligneReponse);
 $reqQuestion = mysqli_fetch_assoc($reqQuestion);
+
+// $ligneReponse = "SELECT reponse FROM Questions WHERE id=$idURL";
+// $reqReponse = mysqli_query($db, $ligneReponse);
+$test = 'SELECT EXISTS (SELECT reponse FROM Questions WHERE id="' . $idURL . '" ) AS article_exists';
+$result = mysqli_query($db, $test);
+$req = mysqli_fetch_array($result);
 
 ?>
 
@@ -81,16 +87,17 @@ if (isset($_POST['valider']) and $_POST['valider'] == 'Envoyer') {
         echo "<br><br><p style='color:red'>Veuillez remplir le champ texte";}
     // Si il y a du texte alors ...
     else {
-        if (empty($reqReponse)) {
-            // Requete pour ajouter une ligne a la base de donné puiqu'il y a déjà une réponse
-            $reqInsert = "INSERT INTO MultiReponse (idQ, reponses, prenom) VALUES ($idURL,'" . $reponse . "', '" . $prenom . "')";
+        if ($req['article_exists'] == true) {
+            // Requete pour ajouter une ligne a la base de donné puisqu'il y a déjà une réponse
+            $reqInsert = "INSERT INTO MultiReponse (idQ, reponse, prenom) VALUES ($idURL,'" . $reponse . "', '" . $prenom . "')";
             mysqli_query($db, $reqInsert);
             echo $reqInsert;
         } else {
             // Modifier la ligne de la question puisqu'il n'y a pas encore de réponse
             $reqAlter = "UPDATE Questions SET reponse=' $reponse ' WHERE id =$idURL;";
             mysqli_query($db, $reqAlter);
-            header('Location: validationReponse.php');
+            // header('Location: validationReponse.php');
+            echo $reqAlter;
         }
     }
 }?>
