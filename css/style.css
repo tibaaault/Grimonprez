@@ -5,3 +5,12 @@
 .tailleFormulaire {
 padding: 30px!important;
 }
+
+#searchbar{
+    margin: auto;
+    border-radius: 10px;
+    border-width: 4px;
+  }
+
+
+

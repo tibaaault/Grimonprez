@@ -13,19 +13,23 @@ include "entete.php";
 
 //Récupérer l'id et la question du fichier question.php
 $idURL = $_GET['id'];
-$recupQuestion = "SELECT question FROM Questions WHERE id=$idURL";
-echo $recupQuestion;
-$reqQuestion = mysqli_connect($db, $recupQuestion);
+$ligneQuestion = "SELECT question FROM Questions WHERE id=$idURL";
+$ligneReponse = "SELECT reponse FROM Questions WHERE id=$idURL";
+$reqQuestion = mysqli_query($db, $ligneQuestion);
+$reqReponse = mysqli_query($db, $ligneReponse);
+$reqQuestion = mysqli_fetch_assoc($reqQuestion);
+
 ?>
+
     <div class="container-fluid">
       <div class="col-xl-8 col-xs-12 mx-auto text-center border border-2 border-dark p-3">
         <!-- Formulaire pour récupérer les informations qui vont être rentrées -->
-        <form class="form form-group" action="formulaireAjout.php" method="POST">
+        <form class="form form-group" action="formulaireAjout.php?id=<?php echo $idURL; ?>" method="POST">
           <p class="text-dark h3 ">
             <br>
           <?php
 //Afficher la question dans le fichier question.php
-  echo $reqQuestion;
+print_r($reqQuestion);
 ?>
           </p>
           <br />
@@ -44,7 +48,7 @@ $reqQuestion = mysqli_connect($db, $recupQuestion);
           </div>
           <br /><br />
           <!-- Case réponse -->
-          <label class="lead">Écrire la réponse si dessous. </label><label class="text-danger"> *</label>
+          <label class="lead">Écrire la réponse ci-dessous. </label><label class="text-danger"> *</label>
           <div class="col-8 mx-auto">
             <div class="form-outline mb-4">
             <textarea class="form-control" name="textReponse" id="form4Example3" rows="6"></textarea>
@@ -77,16 +81,16 @@ if (isset($_POST['valider']) and $_POST['valider'] == 'Envoyer') {
         echo "<br><br><p style='color:red'>Veuillez remplir le champ texte";}
     // Si il y a du texte alors ...
     else {
-        if ($resultat['reponse']) {
+        if (empty($reqReponse)) {
             // Requete pour ajouter une ligne a la base de donné puiqu'il y a déjà une réponse
-            $reqInsert = "INSERT INTO Questions (id, question, reponse, prenom) VALUES ($unId, '" . $laQuestion . "' , '" . $reponse . "', '" . $prenom . "')";
+            $reqInsert = "INSERT INTO MultiReponse (idQ, reponses, prenom) VALUES ($idURL,'" . $reponse . "', '" . $prenom . "')";
             mysqli_query($db, $reqInsert);
             echo $reqInsert;
         } else {
             // Modifier la ligne de la question puisqu'il n'y a pas encore de réponse
-            $reqAlter = "UPDATE Questions SET reponse=' $reponse ' WHERE id =$unId;";
+            $reqAlter = "UPDATE Questions SET reponse=' $reponse ' WHERE id =$idURL;";
             mysqli_query($db, $reqAlter);
-            echo $reqAlter;
+            header('Location: validationReponse.php');
         }
     }
 }?>
