@@ -11,6 +11,15 @@ padding: 30px!important;
     border-radius: 10px;
     border-width: 4px;
   }
-
-
-
+@media (max-width : 750px){
+.espace {
+    margin-bottom: 10px!important;
+    display: flex!important;
+    margin:auto!important;
+}
+.centre {
+    display: flex!important;
+    margin:auto!important;
+    margin-top: 10px!important;
+}
+}

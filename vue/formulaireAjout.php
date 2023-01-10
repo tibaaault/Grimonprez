@@ -3,6 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire</title>
   </head>
   <body>
     <?php
@@ -13,29 +14,24 @@ include "entete.php";
 
 //Récupérer l'id et la question du fichier question.php
 $idURL = $_GET['id'];
-
+// Récuper le numéro rep dans l'url
+$repLien = $_GET['rep'];
 // Recuperer la question grâce à l'id de l'url
-$ligneQuestion = "SELECT question FROM Questions WHERE id=$idURL";
+$ligneQuestion = "SELECT question FROM Questions WHERE id= '$idURL'";
 $reqQuestion = mysqli_query($db, $ligneQuestion);
 $reqQuestion = mysqli_fetch_assoc($reqQuestion);
-
-// $ligneReponse = "SELECT reponse FROM Questions WHERE id=$idURL";
-// $reqReponse = mysqli_query($db, $ligneReponse);
-$test = 'SELECT EXISTS (SELECT reponse FROM Questions WHERE id="' . $idURL . '" ) AS article_exists';
-$result = mysqli_query($db, $test);
-$req = mysqli_fetch_array($result);
-
 ?>
 
     <div class="container-fluid">
       <div class="col-xl-8 col-xs-12 mx-auto text-center border border-2 border-dark p-3">
         <!-- Formulaire pour récupérer les informations qui vont être rentrées -->
-        <form class="form form-group" action="formulaireAjout.php?id=<?php echo $idURL; ?>" method="POST">
+        <form class="form form-group" action="formulaireAjout.php?rep=<?php echo $repLien ?>&id=<?php echo $idURL; ?>" method="POST">
           <p class="text-dark h3 ">
             <br>
           <?php
 //Afficher la question dans le fichier question.php
 print_r($reqQuestion);
+echo $reponse;
 ?>
           </p>
           <br />
@@ -87,17 +83,16 @@ if (isset($_POST['valider']) and $_POST['valider'] == 'Envoyer') {
         echo "<br><br><p style='color:red'>Veuillez remplir le champ texte";}
     // Si il y a du texte alors ...
     else {
-        if ($req['article_exists'] == true) {
+        if ($repLien == 1) {
             // Requete pour ajouter une ligne a la base de donné puisqu'il y a déjà une réponse
             $reqInsert = "INSERT INTO MultiReponse (idQ, reponse, prenom) VALUES ($idURL,'" . $reponse . "', '" . $prenom . "')";
             mysqli_query($db, $reqInsert);
-            echo $reqInsert;
+            header('Location: validationReponse.php');
         } else {
             // Modifier la ligne de la question puisqu'il n'y a pas encore de réponse
             $reqAlter = "UPDATE Questions SET reponse=' $reponse ' WHERE id =$idURL;";
             mysqli_query($db, $reqAlter);
-            // header('Location: validationReponse.php');
-            echo $reqAlter;
+            header('Location: validationReponse.php');
         }
     }
 }?>
