@@ -10,7 +10,6 @@
 </head>
 
 <body>
-  </script>
   <!-- Lien vers Bootstrap / Connexion BDD / Entete -->
   <?php
 include_once "../controleur/bootstrapCSS.php";
@@ -81,7 +80,7 @@ if ($resultat['reponse']) {
         // Si le résultat a une réponse mais pas de prénom, afficher la réponse + le bouton
         echo $resultat['reponse'];
         ?> <br><br><a href="formulaireAjout.php?rep=1&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary" value="Ajouter une réponse"></input></a>
-        <a href=".php?id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary md" value="Voir + de réponse"></input></a>
+        <a href="listeReponse.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary md" value="Voir + de réponse"></input></a>
               <?php
     }
     // Si le résultat n'a pas de réponse, afficher juste le bouton
@@ -98,7 +97,8 @@ $i++;
 }
 ?>
       <!--Fin du module -->
-
+      <!-- Espace de fin -->
+      <div class="col-12 mb-5"></div>
       <!-- Link js -->
       <script src="js/searchBar.js"></script>
       <!-- link bootstrap -->

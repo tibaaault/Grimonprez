@@ -16,10 +16,9 @@ include "entete.php";
 $idURL = $_GET['id'];
 // Récuper le numéro rep dans l'url
 $repLien = $_GET['rep'];
-// Recuperer la question grâce à l'id de l'url
-$ligneQuestion = "SELECT question FROM Questions WHERE id= '$idURL'";
-$reqQuestion = mysqli_query($db, $ligneQuestion);
-$reqQuestion = mysqli_fetch_assoc($reqQuestion);
+// Select la question grâce à l'id du lien
+$selectQuestion = mysqli_query($db, "SELECT * FROM Questions WHERE id = $idURL");
+
 ?>
 
     <div class="container-fluid">
@@ -29,9 +28,10 @@ $reqQuestion = mysqli_fetch_assoc($reqQuestion);
           <p class="text-dark h3 ">
             <br>
           <?php
-//Afficher la question dans le fichier question.php
-print_r($reqQuestion);
-echo $reponse;
+//Afficher la question correspondant à l'id récupérer du fichier question.php
+while ($ligne = mysqli_fetch_array($selectQuestion)) {
+    echo $ligne['question'];
+}
 ?>
           </p>
           <br />
@@ -85,12 +85,12 @@ if (isset($_POST['valider']) and $_POST['valider'] == 'Envoyer') {
     else {
         if ($repLien == 1) {
             // Requete pour ajouter une ligne a la base de donné puisqu'il y a déjà une réponse
-            $reqInsert = "INSERT INTO MultiReponse (idQ, reponse, prenom) VALUES ($idURL,'" . $reponse . "', '" . $prenom . "')";
+            $reqInsert = "INSERT INTO MultiReponse (idQ, reponse, prenom, date) VALUES ($idURL,'" . $reponse . "', '" . $prenom . "', now())";
             mysqli_query($db, $reqInsert);
             header('Location: validationReponse.php');
         } else {
             // Modifier la ligne de la question puisqu'il n'y a pas encore de réponse
-            $reqAlter = "UPDATE Questions SET reponse=' $reponse ' WHERE id =$idURL;";
+            $reqAlter = "UPDATE Questions SET reponse =' $reponse', prenom = ' $prenom ', date = now() WHERE id =$idURL;";
             mysqli_query($db, $reqAlter);
             header('Location: validationReponse.php');
         }
@@ -99,6 +99,9 @@ if (isset($_POST['valider']) and $_POST['valider'] == 'Envoyer') {
         </form>
       </div>
     </div>
+     <!-- Espace de fin -->
+     <div class="col-12 mb-5"></div>
+     <!-- Link Js Bootstrap -->
     <?php include_once "../controleur/bootstrapJS.php"?>
   </body>
 </html>
