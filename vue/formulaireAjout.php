@@ -3,7 +3,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
     <title>Formulaire</title>
+    <style>
+    body {
+      background-color: rgb(205, 205, 205)!important;
+    }
+    </style>
   </head>
   <body>
     <?php
@@ -22,7 +28,7 @@ $selectQuestion = mysqli_query($db, "SELECT * FROM Questions WHERE id = $idURL")
 ?>
 
     <div class="container-fluid">
-      <div class="col-xl-8 col-xs-12 mx-auto text-center border border-2 border-dark p-3">
+      <div class="bg-light col-xl-8 col-xs-12 mx-auto text-center border border-2 border-dark p-3 rounded-9">
         <!-- Formulaire pour récupérer les informations qui vont être rentrées -->
         <form class="form form-group" action="formulaireAjout.php?rep=<?php echo $repLien ?>&id=<?php echo $idURL; ?>" method="POST">
           <p class="text-dark h3 ">
@@ -61,7 +67,7 @@ while ($ligne = mysqli_fetch_array($selectQuestion)) {
           <br /><br>
           <!-- Bouton envoyer -->
           <input
-            class="btn btn-primary"
+            class="btn btn-primary btn-lg"
             name="valider"
             type="submit"
             value="Envoyer"
@@ -80,7 +86,7 @@ $prenom = $_POST['prenom'];
 if (isset($_POST['valider']) and $_POST['valider'] == 'Envoyer') {
     // Vérifier si il y a du texte dans la case réponse, si non, alors afficher Veuillez ...
     if (empty($_POST['textReponse'])) {
-        echo "<br><br><p style='color:red'>Veuillez remplir le champ texte";}
+        echo "<br><br><p style='color:red'><i class='fas fa-exclamation-triangle'></i>Veuillez remplir le champ texte";}
     // Si il y a du texte alors ...
     else {
         if ($repLien == 1) {

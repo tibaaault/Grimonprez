@@ -19,11 +19,12 @@ include "entete.php";
   <!-- Fin lien  -->
 
   <!-- Barre de recherche -->
-  <div class='container'">
+  <div class='container'>
     <div class=" content-wrapper">
-    <div class="row text-center">
+    <div class="row text-center ">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <input id="searchbar" onkeyup="chercher()" type="text" name="search" placeholder="Chercher par mots clés">
+        <i class="fas fa-lg fa-search"></i>
       </div>
     </div>
   </div>
@@ -38,7 +39,7 @@ $result = mysqli_query($db, $ligne);
 ?>
   <!-- Début accordéon (main) -->
   <div class="container" style="font-family: robotothin">
-    <div class="accordion " id="accordionExample">
+    <div class="accordion" id="accordionExample">
 
       <!-- Début boucle pour afficher chaque question -->
       <?php
@@ -52,7 +53,7 @@ while ($resultat = mysqli_fetch_array($result)) {
         <!-- 1 Module Accordéon-->
         <div class="accordion-item recherche">
           <h2 class="accordion-header" id="heading<?php echo $i; ?>">
-            <button class="accordion-button text-black" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapse<?php echo $i; ?>" aria-expanded="<?php echo ($i == 1) ? 'true' : 'false'; ?>" aria-controls="collapse<?php echo $i; ?>">
+            <button class="accordion-button text-black backcolor" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapse<?php echo $i; ?>" aria-expanded="<?php echo ($i == 1) ? 'true' : 'false'; ?>" aria-controls="collapse<?php echo $i; ?>">
               <?php
 echo $uneQuestion;
     $idQuestion = $resultat['id'];
@@ -60,16 +61,16 @@ echo $uneQuestion;
               <!-- Ligne îcone -->
               <?php
 if ($resultat['reponse']) {
-        echo '<i style="color:green" class="fas fa-check fa-lg ms-2"></i>';
+        echo '<i style="color:green" class="fas fa-check fa-lg ms-2 mr-auto"></i>';
     } else {
-        echo '<i style="color:red" class="fas fa-times fa-lg ms-2"></i>';
+        echo '<i style="color:red" class="fas fa-times fa-lg ms-2 mr-auto"></i>';
     }
     ?>
               <!-- Fin lignes îcone -->
             </button>
           </h2>
           <div id="collapse<?php echo $i; ?>" class="accordion-collapse collapse <?php if ($i == 1) {echo 'show';}?>" aria-labelledby="heading<?php echo $i; ?>" data-mdb-parent="#accordionExample">
-            <div class="accordion-body">
+            <div class="accordion-body backcolor">
               <!-- Si le résultat à une réponse et un prénom, alors afficher les deux + le bouton -->
               <?php
 

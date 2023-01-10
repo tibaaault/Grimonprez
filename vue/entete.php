@@ -25,7 +25,7 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-lg-0 text-center" href="#">
+      <a class="navbar-brand mt-2 mt-lg-0 text-center" href="question.php">
         <img
           src=""
           height="60"
@@ -45,6 +45,7 @@
 
     <!-- Right elements -->
     <div class="d-flex">
+    <i class="fab fa-forumbee"></i>
       <!-- Icon -->
 
     <!-- Right elements -->

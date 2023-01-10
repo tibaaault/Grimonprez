@@ -13,11 +13,12 @@ include_once "../controleur/bddConnect.php";
 include "entete.php";
 ?>
  <!-- Barre de recherche -->
- <div class='container'">
+ <div class='container'>
     <div class=" content-wrapper">
     <div class="row text-center">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <input id="searchbar" onkeyup="chercher()" type="text" name="search" placeholder="Chercher par mots clés">
+        <i class="fas fa-lg fa-search"></i>
       </div>
     </div>
   </div>
@@ -30,22 +31,24 @@ $selectMulti = mysqli_query($db, "SELECT * FROM Questions, MultiReponse WHERE id
 ?>
 <div class='container'>
 <div class=" content-wrapper">
-
-
 <?php
 // Afficher ce qui se trouve dans la table Questions
 while ($ligne = mysqli_fetch_array($selectSimple)) {
     ?>
     <!-- Afficher la question -->
-    <div class="row border border-secondary">
-    <div class="col-12 h2 border border-4 border-dark pb-3 pt-3 text-center">
-        <?php
+    <div class="card text-center mb-4 pt-3 shadow-5-strong">
+        <div class="card-body h3">
+            <?php
 echo $ligne['question'];
     ?>
-            </div>
+</div>
+</div>
+<div class="col-12 mb-3">
+<div class="card shadow-5-strong">
+        <div class="card-body recherche ">
             <!-- Afficher le prénom s'il existe -->
             <?php if ($ligne['prenom']) {?>
-            <div class="col-12 ms-5">
+            <div class="col-12 ms-5 ">
             <?php
 echo "Prénom : " . $ligne['prenom'] . "   <br>";
         ?>
@@ -66,13 +69,16 @@ echo $ligne['reponse'];
                 </em>
             </div>
         </div>
+</div></div>
 
 <?php
 }
 // Afficher ce qui se trouve dans la table MultiReponse
 while ($ligne = mysqli_fetch_array($selectMulti)) {
     ?>
-        <div class="row border border-secondary recherche">
+<div class="col-12 mb-3 recherche">
+<div class="card shadow-5-strong">
+        <div class="card-body ">
             <!-- Afficher le prénom s'il existe -->
             <?php if ($ligne['prenom']) {?>
             <div class="col-12 ms-5">
@@ -96,9 +102,12 @@ echo $ligne['reponse'];
                 </em>
             </div>
         </div>
+</div></div>
+
 <?php
 }
 ?>
+        </div>
 <!-- Espace de fin -->
 <div class="col-12 mb-5"></div>
 <!-- Bouton ajouter une reponse -->
