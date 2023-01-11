@@ -1,3 +1,5 @@
+
+if (checkBox){
 function chercher() {
   let input = document.getElementById("searchbar").value;
   input = input.toLowerCase();
@@ -11,7 +13,7 @@ function chercher() {
     }
   }
 }
-
+}
 function checkBox() {
   let input = document.getElementById("searchCheck").value;
   let input2 = document.getElementById("searchCheck2").value;

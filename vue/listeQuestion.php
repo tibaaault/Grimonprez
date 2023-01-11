@@ -13,6 +13,7 @@
 <body>
   <!-- Lien vers Bootstrap / Connexion BDD / Entete -->
   <?php
+  session_start();
   include_once "../controleur/bootstrapCSS.php";
   include_once "../controleur/bddConnect.php";
   include "entete.php";

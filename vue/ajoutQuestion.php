@@ -16,6 +16,7 @@
 <body>
   <!-- Include de bootstrap / BDD / entete -->
   <?php
+  session_start();
   include_once "../controleur/bootstrapCSS.php";
   include_once "../controleur/bddConnect.php";
   include "entete.php";
@@ -79,13 +80,7 @@
             //Envoie d'un mail automatique à chaque nouvelle question
             // $to      = 'ecmr@groupeblondel.com';
             $to = 'troelstrate@gmail.com';
-            $subject = 'Ajout d\'une question dans le forum';
-            $message = $_POST['question'];
-            $headers = 'From: plateformeFAQ@groupeblondel.com' . "\r\n" .
-            'Reply-To: plateformeFAQ@groupeblondel.com' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-            mail($to, $subject, $message, $headers);
-            header('Location: validationQuestion.php');
+            mail($to, 'Ajout d\'une question FAQ', $question);
           }
         } ?>
       </form>
