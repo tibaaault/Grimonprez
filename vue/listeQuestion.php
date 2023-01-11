@@ -19,54 +19,47 @@
   ?>
   <!-- Fin lien  -->
 
-  <!-- Barre de recherche -->
-  <div class='container'>
-    <div class=" content-wrapper">
-      <div class="row text-center ">
-        <div class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
-          <div class="search">
-            <input class="search__input" id="searchbar" onkeyup="chercher()" type="text" name="search" placeholder="Chercher par mots clés">
-            <i class="loupe fas fa-lg fa-search"></i>
+  <!-- Combo box -->
+  <div class="container mt-3">
+    <div class="row mb-3">
+      <div class="col">
+        <section class="card">
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-sm-6 mx-auto">
+                  <h4>Filtres</h4>
+                  <div class="form-check">
+                    <input class="form-check-input" id="searchCheck" onclick="checkBox()" type="checkbox" name="search" value="oui">
+                    <label class="form-check-label" for="searchCheck">Avec une réponse</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" id="searchCheck2" onclick="checkBox()" type="checkbox" name="search" value="non" />
+                    <label class="form-check-label" for="searchCheck2">Sans réponse</label>
+                  </div>
+                </div>
+                <!-- Barre recherche -->
+                <div class="mt-4 col-xs-6 col-sm-12 col-md-4 col-lg-4 mx-auto my-auto">
+                  <div class="input-group">
+                    <div class="form-outline">
+                      <input class="search__input form-control" id="searchbar" onkeyup="chercher()" type="text" name="search">
+                      <label class="form-label" for="form1">Chercher par mots clés</label>
+                    </div>
+                    <button type="button" class="btn btn-primary">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- fin barre recherche -->
+              </div>
+            </form>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </div>
-
-          <!-- Fin barre de recherche -->
-
-          <!-- Combo box -->
-          <div class="container mt-3">
-  <div class="row mb-3">
-    <div class="col">
-      <section class="card">
-        <div class="card-body">
-          <form>
-            <div class="row">
-              <div class="col-sm-6">
-                <h4>Categories</h4>
-
-                <div class="form-check">
-                  <input id="cb-category-one" class="cb-category form-check-input" type="checkbox" name="categories[]" value="category-one" />
-                  <label class="form-check-label" for="cb-category-one">Category One</label>
-                </div>
-
-                <div class="form-check">
-                  <input id="cb-category-two" class="cb-category form-check-input" type="checkbox" name="categories[]" value="category-two" />
-                  <label class="form-check-label" for="cb-category-two"> Category Two </label>
-                </div>
-
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </section>
-    </div>
-  </div>
-
-          <!-- Fin combo box -->
-
+    <!-- Fin combo box -->
+    <br>
     <?php
     //Requete bdd
     $ligne = "SELECT * FROM Questions ORDER BY id ASC";
@@ -87,7 +80,7 @@
         ?>
 
           <!-- 1 Module Accordéon / recherche correspond au code de la searchBar -->
-          <div class="accordion-item recherche">
+          <div class="accordion-item recherche searchCheckbox searchCheckbox2">
             <h2 class="accordion-header" id="heading<?php echo $i; ?>">
               <!-- backcolor est dans le fichier css -->
               <button class="accordion-button text-black backcolor" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapse<?php echo $i; ?>" aria-expanded="<?php echo ($i == 1) ? 'true' : 'false'; ?>" aria-controls="collapse<?php echo $i; ?>">
@@ -98,9 +91,9 @@
                 <!-- Ligne îcone -->
                 <?php
                 if ($resultat['reponse']) {
-                  echo '<i style="color:green" alt="oui" id="01" class="fas fa-check fa-lg ms-2 mr-auto"></i>';
+                  echo '<i style="color:green" alt="oui" class="fas fa-check fa-lg ms-2 mr-auto"></i>';
                 } else {
-                  echo '<i style="color:red" alt="non" id="02" class="fas fa-times fa-lg ms-2 mr-auto"></i>';
+                  echo '<i style="color:red" alt="non" class="fas fa-times fa-lg category-two ms-2 mr-auto"></i>';
                 }
                 ?>
                 <!-- Fin lignes îcone -->

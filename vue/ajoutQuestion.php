@@ -79,7 +79,7 @@
             // $to      = 'ecmr@groupeblondel.com';
             $to = 'troelstrate@gmail.com';
             $subject = 'Ajout d\'une question dans le forum';
-            $message = $question;
+            $message = $_POST['question'];
             $headers = 'From: plateformeFAQ@groupeblondel.com' . "\r\n" .
             'Reply-To: plateformeFAQ@groupeblondel.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();

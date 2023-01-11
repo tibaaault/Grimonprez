@@ -26,7 +26,12 @@ padding: 30px!important;
 .loupe {
 display: none!important;
 }
+.search__input {
+    padding-left: 0!important;
+    text-align: center!important;
 }
+}
+
 @media (min-width : 750px){
 .ms-6 {
     margin-left: 5rem!important ;
