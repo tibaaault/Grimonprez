@@ -29,7 +29,7 @@
   $selectQuestion = mysqli_query($db, "SELECT * FROM Questions WHERE id = $idURL");
 
   ?>
-<br>
+  <br>
   <div class="container-fluid">
     <!-- bg correspond au background / mx-auto (margin-auto) / rounded (border-radius) -->
     <div class="bg-light col-xl-8 col-xs-12 mx-auto text-center border border-2 border-dark p-3 rounded-9">
@@ -46,13 +46,13 @@
         <!-- Case question -->
         <label class="lead">Écrire la question ci-dessous </label><label class="text-danger">*</label><br><br>
         <div class="col-xl-8 col-xs-12 mx-auto">
-        <div class="form-outline mb-4">
+          <div class="form-outline mb-4">
             <textarea class="form-control" name="question" id="form4Example3" rows="3"></textarea>
             <label class="form-label" for="form4Example3">Question</label>
-        </div>
+          </div>
         </div>
         <!-- Fin case réponse -->
-        
+
         <!-- Bouton envoyer / btn (button) -->
         <input class="btn btn-primary btn-lg" name="valider" type="submit" value="Envoyer" />
         <!-- Fin bouton envoyer -->
@@ -62,7 +62,7 @@
         $question = $_POST['question'];
         // Ignorer les '
         $question = addslashes($question);
-        
+
 
         // Quand le bouton est préssé
         if (isset($_POST['valider']) and $_POST['valider'] == 'Envoyer') {
@@ -72,10 +72,19 @@
           }
           // Si il y a du texte alors ...
           else {
-              // Requete pour ajouter une ligne a la base de donné puisqu'il y a déjà une réponse
-              $reqInsert = "INSERT INTO Questions (question) VALUES ('" . $question . "')";
-              mysqli_query($db, $reqInsert);
-              header('Location: validationReponse.php');
+            // Requete pour ajouter une ligne a la base de donné puisqu'il y a déjà une réponse
+            $reqInsert = "INSERT INTO Questions (question) VALUES ('" . $question . "')";
+            mysqli_query($db, $reqInsert);
+            //Envoie d'un mail automatique à chaque nouvelle question
+            // $to      = 'ecmr@groupeblondel.com';
+            $to = 'troelstrate@gmail.com';
+            $subject = 'Ajout d\'une question dans le forum';
+            $message = $question;
+            $headers = 'From: plateformeFAQ@groupeblondel.com' . "\r\n" .
+            'Reply-To: plateformeFAQ@groupeblondel.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+            mail($to, $subject, $message, $headers);
+            header('Location: validationReponse.php');
           }
         } ?>
       </form>

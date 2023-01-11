@@ -23,7 +23,7 @@
   <div class='container'>
     <div class=" content-wrapper">
       <div class="row text-center ">
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
           <div class="search">
             <input class="search__input" id="searchbar" onkeyup="chercher()" type="text" name="search" placeholder="Chercher par mots clés">
             <i class="loupe fas fa-lg fa-search"></i>
@@ -31,9 +31,41 @@
         </div>
       </div>
     </div>
-    <br><br>
-    <!-- Fin barre de recherche -->
+  </div>
 
+          <!-- Fin barre de recherche -->
+
+          <!-- Combo box -->
+          <div class="container mt-3">
+  <div class="row mb-3">
+    <div class="col">
+      <section class="card">
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-sm-6">
+                <h4>Categories</h4>
+
+                <div class="form-check">
+                  <input id="cb-category-one" class="cb-category form-check-input" type="checkbox" name="categories[]" value="category-one" />
+                  <label class="form-check-label" for="cb-category-one">Category One</label>
+                </div>
+
+                <div class="form-check">
+                  <input id="cb-category-two" class="cb-category form-check-input" type="checkbox" name="categories[]" value="category-two" />
+                  <label class="form-check-label" for="cb-category-two"> Category Two </label>
+                </div>
+
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+
+          <!-- Fin combo box -->
 
     <?php
     //Requete bdd
@@ -57,7 +89,7 @@
           <!-- 1 Module Accordéon / recherche correspond au code de la searchBar -->
           <div class="accordion-item recherche">
             <h2 class="accordion-header" id="heading<?php echo $i; ?>">
-            <!-- backcolor est dans le fichier css -->
+              <!-- backcolor est dans le fichier css -->
               <button class="accordion-button text-black backcolor" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapse<?php echo $i; ?>" aria-expanded="<?php echo ($i == 1) ? 'true' : 'false'; ?>" aria-controls="collapse<?php echo $i; ?>">
                 <?php
                 echo $uneQuestion;
@@ -66,9 +98,9 @@
                 <!-- Ligne îcone -->
                 <?php
                 if ($resultat['reponse']) {
-                  echo '<i style="color:green" alt="oui" class="fas fa-check fa-lg ms-2 mr-auto"></i>';
+                  echo '<i style="color:green" alt="oui" id="01" class="fas fa-check fa-lg ms-2 mr-auto"></i>';
                 } else {
-                  echo '<i style="color:red" alt="non" class="fas fa-times fa-lg ms-2 mr-auto"></i>';
+                  echo '<i style="color:red" alt="non" id="02" class="fas fa-times fa-lg ms-2 mr-auto"></i>';
                 }
                 ?>
                 <!-- Fin lignes îcone -->
@@ -84,15 +116,15 @@
                   if ($resultat['prenom']) {
                     echo "Prénom : " . $resultat['prenom'] . "<br>";
                   }
-                  ?>
+                ?>
                   <!-- Afficher la date -->
-                    <?php
-                      $d = date("d/m/Y", strtotime($resultat['date']));
-                        echo "Le : " . $d . "<br>"?>
-                <?php
-                // Si le résultat a une réponse mais pas de prénom, afficher la réponse + le bouton
+                  <?php
+                  $d = date("d/m/Y", strtotime($resultat['date']));
+                  echo "<b class='small'>Le : " . $d . "</b><br>" ?>
+                  <?php
+                  // Si le résultat a une réponse mais pas de prénom, afficher la réponse + le bouton
                   echo $resultat['reponse'];
-                ?> <br><br><a href="ajoutReponse.php?rep=1&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary" value="Ajouter une réponse"></input></a>
+                  ?> <br><br><a href="ajoutReponse.php?rep=1&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary" value="Ajouter une réponse"></input></a>
                   <a href="listeReponse.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary md" value="Voir + de réponse"></input></a>
                 <?php
                 }
@@ -110,6 +142,8 @@
         }
         ?>
         <!--Fin du module -->
+
+
         <!-- Espace de fin -->
         <div class="col-12 mb-5"></div>
         <!-- Link js -->

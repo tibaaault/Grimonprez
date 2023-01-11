@@ -71,7 +71,7 @@
                                 <div class="col-12 ms-5">
                                     <?php
                                     $d = date("d/m/Y", strtotime($ligne['date']));
-                                    echo "Le : " . $d ?>
+                                    echo "<b class='small'>Le : " . $d . "</b><br>"?>
                                 </div>
                                 <!-- Afficher la réponse -->
                                 <div class="col-12 lead ms-6 mb-2">
@@ -108,7 +108,7 @@
                                 <div class="col-12 ms-5">
                                     <?php
                                     $d = date("d/m/Y", strtotime($ligne['date']));
-                                    echo "Le : " . $d ?>
+                                    echo "<b class='small'>Le : " . $d . "</b><br>"?>
                                 </div>
                                 <!-- Afficher la réponse -->
                                 <div class="col-12 lead ms-6 mb-2">
