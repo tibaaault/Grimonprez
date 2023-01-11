@@ -16,7 +16,6 @@
 <body>
   <!-- Include de bootstrap / BDD / entete -->
   <?php
-  session_start();
   include_once "../controleur/bootstrapCSS.php";
   include_once "../controleur/bddConnect.php";
   include "entete.php";
@@ -77,8 +76,12 @@
         $reponse = $_POST['textReponse'];
         // Ignorer les '
         $reponse = addslashes($reponse);
+        //Ajouter la première lettre de la réponse en majuscule
+        $reponse = ucfirst($reponse);
         // récupérer le prénom
         $prenom = $_POST['prenom'];
+        // Ajouter la première lettre du prénom en majuscule
+        $prenom = ucfirst($prenom);
 
         // Quand le bouton est préssé
         if (isset($_POST['valider']) and $_POST['valider'] == 'Envoyer') {
