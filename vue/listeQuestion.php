@@ -65,6 +65,9 @@
     //Requete bdd
     $ligne = "SELECT * FROM Questions ORDER BY id ASC";
     $result = mysqli_query($db, $ligne);
+    // $ligne = $bdd1->prepare("SELECT * FROM Questions ORDER BY id ASC");
+    // $ligne = execute-> (array());
+    
 
     ?>
     <!-- Début accordéon (main) -->
@@ -75,7 +78,7 @@
         <?php
         $i = 1;
         while ($resultat = mysqli_fetch_array($result)) {
-          // if ($i = $resultId){
+        // while ($resultat = $ligne->fetch()) {
           // Définir la question et l'id dans des variables pour ensuite les récupérer dans le fichier ajoutReponse.php
           $uneQuestion = $resultat['question'];
         ?>
