@@ -29,15 +29,15 @@
             <div class="row">
               <!-- Barre recherche -->
               <div class="col-lg-8 ms-lg-5">
-                <h4>~~ Barre de recherche ~~</h4>
+                <h4>Barre de recherche</h4>
                 <form action="listeRecherche.php" method="GET">
                 <div class="mt-3 col-xs-6 col-sm-12 col-md-4 col-lg-6 my-auto">
                   <div class="input-group">
                     <div class="form-outline">
-                      <input class="search__input form-control" id="searchbar" onkeyup="chercher()" type="text" name="search">
+                      <input class="search__input form-control" id="searchbar" onkeyup="chercher()" type="text" name="search" required>
                       <label class="form-label" for="form1">Chercher par mots clés</label>
                     </div>
-                    <button id="btn" name="clickRecherche" type="submit" class="btn btn-primary" value="iconeRecherche">
+                    <button id="btn" type="submit" class="btn btn-primary">
                       <i class="fas fa-search" ></i>
                     </button>
                   </div>
@@ -113,7 +113,7 @@
             $uneQuestion = $resultat['question'];
       ?>
             <!-- 1 Module Accordéon / recherche correspond au code de la searchBar -->
-            <div class="accordion-item searchCheckbox searchCheckbox2 <?php if ($pageURL != 1 and $i == 0) {
+            <div class="accordion-item <?php if ($pageURL != 1 and $i == 0) {
                                                                         echo 'd-none';
                                                                       } ?>">
               <h2 class="accordion-header" id="heading<?php echo $i; ?>">
@@ -182,11 +182,11 @@
       <div class="col-12 mb-5"></div>
       <!-- Début pagination  -->
 
-      <nav>
+      <nav aria-label="Page navigation example">
         <ul class="justify-content-center pagination">
           <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
           <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
-            <a href="listeQuestion.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
+            <a href="listeQuestion.php?page=<?= $currentPage - 1 ?>" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
           </li>
           <?php for ($page = 1; $page <= ceil($numLigne / $limite); $page++) : ?>
             <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
@@ -196,28 +196,11 @@
           <?php endfor ?>
           <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
           <li class="page-item <?= ($currentPage == ceil($numLigne / $limite)) ? "disabled" : "" ?>">
-            <a href="listeQuestion.php?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
+            <a href="listeQuestion.php?page=<?= $currentPage + 1 ?>" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
           </li>
         </ul>
       </nav>
       <!-- Fin pagination -->
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       
   <!-- Espace de fin -->
   <div class="col-12 mb-5"></div>
