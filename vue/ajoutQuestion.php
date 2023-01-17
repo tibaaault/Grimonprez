@@ -55,6 +55,9 @@ include "entete.php";
 $question = $_POST['question'];
 // Ignorer les '
 $question = addslashes($question);
+//Remplacer les <> en ()
+$question = str_replace("<", "(", $question);
+$question = str_replace(">", ")", $question);
 // Ajouter la première lettre du prénom en majuscule
 $question = ucfirst($question);
 

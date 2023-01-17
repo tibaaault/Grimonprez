@@ -71,7 +71,7 @@
                                 <div class="col-12 ms-5">
                                     <?php
                                     $d = date("d/m/Y", strtotime($ligne['date']));
-                                    echo "<b class='small'>Le : " . $d . "</b><br>"?>
+                                    echo "<b class='small'>Le : " . $d . "</b><br>" ?>
                                 </div>
                                 <!-- Afficher la réponse -->
                                 <div class="col-12 lead ms-6 mb-2">
@@ -86,45 +86,47 @@
                         </div>
                     </div>
                     <!-- Fin module -->
-                <?php
+                    <?php
                 }
                 // Afficher ce qui se trouve dans la table MultiReponse
                 while ($ligne = mysqli_fetch_array($selectMulti)) {
-                ?>  
-                    <!-- Module pour une réponse / recherche correspond au code de la barre search-->
-                    <div class="col-12 mb-3 recherche">
-                        <!-- shadow-5-strong correspond à la box-shadow -->
-                        <div class="card shadow-5-strong">
-                            <div class="card-body ">
-                                <!-- Afficher le prénom s'il existe -->
-                                <?php if ($ligne['prenom']) { ?>
+                    if ($ligne['reponse']) {
+                    ?>
+                        <!-- Module pour une réponse / recherche correspond au code de la barre search-->
+                        <div class="col-12 mb-3 recherche">
+                            <!-- shadow-5-strong correspond à la box-shadow -->
+                            <div class="card shadow-5-strong">
+                                <div class="card-body ">
+                                    <!-- Afficher le prénom s'il existe -->
+                                    <?php if ($ligne['prenom']) { ?>
+                                        <div class="col-12 ms-5">
+                                            <?php
+                                            echo "Prénom : " . $ligne['prenom'] . "<br>";
+                                            ?>
+                                        </div>
+                                    <?php } ?>
+                                    <!-- Afficher date -->
                                     <div class="col-12 ms-5">
                                         <?php
-                                        echo "Prénom : " . $ligne['prenom'] . "<br>";
-                                        ?>
+                                        $d = date("d/m/Y", strtotime($ligne['date']));
+                                        echo "<b class='small'>Le : " . $d . "</b><br>" ?>
                                     </div>
-                                <?php } ?>
-                                <!-- Afficher date -->
-                                <div class="col-12 ms-5">
-                                    <?php
-                                    $d = date("d/m/Y", strtotime($ligne['date']));
-                                    echo "<b class='small'>Le : " . $d . "</b><br>"?>
+                                    <!-- Afficher la réponse -->
+                                    <div class="col-12 lead ms-6 mb-2">
+                                        <em>
+                                            <?php
+                                            echo $ligne['reponse'];
+                                            ?>
+                                        </em>
+                                    </div>
+                                    <!-- Fin réponse -->
                                 </div>
-                                <!-- Afficher la réponse -->
-                                <div class="col-12 lead ms-6 mb-2">
-                                    <em>
-                                        <?php
-                                        echo $ligne['reponse'];
-                                        ?>
-                                    </em>
-                                </div>
-                                <!-- Fin réponse -->
                             </div>
                         </div>
-                    </div>
-                    <!-- Fin module pour une réponse -->
+                        <!-- Fin module pour une réponse -->
 
                 <?php
+                    }
                 }
                 ?>
             </div>

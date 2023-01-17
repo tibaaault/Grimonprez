@@ -7,12 +7,11 @@
 </head>
 
 <body>
-
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
     <!-- Container wrapper -->
     <div class="container">
       <!-- Toggle button -->
-      <button class="navbar-toggler " type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
 
@@ -30,7 +29,6 @@
           <li class="nav-item">
             <a class="nav-link pe-3" href="../vue/ajoutQuestion.php"><b>Poser une question</b></a>
           </li>
-          
         </ul>
         <!-- Left links -->
       </div>
@@ -43,6 +41,7 @@
         <!-- Right elements -->
       </div>
       <!-- Container wrapper -->
+    </div>
   </nav>
 </body>
 
