@@ -5,6 +5,12 @@
     include_once "../controleur/bddConnect.php";
     ?>
   <!-- Fin lien  -->
+  <!-- <footer class="text-center text-white fixed-bottom">
+  <div class="container p-4"></div>
+  <div class="text-center p-3" style="background: red;">2020 Copyright
+  <a class="text-white" href="#">test</a>
+  </div>
+  </footer> -->
   <footer class="bg-dark text-center text-light">
   <!-- Grid container -->
   <div class="container p-4">
@@ -40,6 +46,8 @@
   </div>
   <!-- Copyright -->
 </footer>
+
+  </footer>
   <!-- link bootstrap -->
   <?php include_once "../controleur/bootstrapJS.php" ?>
 
