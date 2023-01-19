@@ -156,7 +156,8 @@
                 <ul class="justify-content-center pagination">
                     <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
                     <li class="page-item <?= ($currentPageQ == 1) ? "disabled" : "" ?>">
-                        <a href="listeRecherche.php?page=<?= $currentPageQ - 1 ?>&search=<?php echo $laRechercheURL ?>" class="page-link"> < Précédente</a>
+                        <a href="listeRecherche.php?page=<?= $currentPageQ - 1 ?>&search=<?php echo $laRechercheURL ?>" class="page-link">
+                            < Précédente</a>
                     </li>
                     <?php for ($pageQ = 1; $pageQ <= ceil($numLigne / $limite); $pageQ++) : ?>
                         <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
@@ -178,7 +179,9 @@
             <!-- Link js -->
             <script src="js/searchBar.js"></script>
             <!-- link bootstrap -->
-            <?php include_once "../controleur/bootstrapJS.php" ?>
+            <?php
+            include_once "../vue/footer.php";
+            include_once "../controleur/bootstrapJS.php" ?>
 </body>
 
 </html>

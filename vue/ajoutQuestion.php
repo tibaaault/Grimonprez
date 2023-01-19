@@ -89,7 +89,9 @@ if (isset($_POST['valider']) and $_POST['valider'] == 'Envoyer') {
   <!-- Espace de fin -->
   <div class="col-12 mb-5"></div>
   <!-- Link Js Bootstrap -->
-  <?php include_once "../controleur/bootstrapJS.php"?>
+  <?php 
+  include_once "../vue/footer.php";
+  include_once "../controleur/bootstrapJS.php"?>
 </body>
 
 </html>

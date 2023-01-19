@@ -7,7 +7,6 @@
   <title>Forum</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="search.scss">
-
 </head>
 
 <body>
@@ -19,7 +18,6 @@
   include "entete.php";
   ?>
   <!-- Fin lien  -->
-
   <!-- Card contenant -->
   <div class="container mt-3">
     <div class="row mb-3">
@@ -182,20 +180,20 @@
       <div class="col-12 mb-5"></div>
       <!-- Début pagination  -->
 
-      <nav aria-label="Page navigation example">
-        <ul class="justify-content-center pagination">
+      <nav aria-label="Page navigation example" class="">
+        <ul class="justify-content-center pagination ">
           <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
-          <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
+          <li class="bg-light page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
             <a href="listeQuestion.php?page=<?= $currentPage - 1 ?>" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
           </li>
           <?php for ($page = 1; $page <= ceil($numLigne / $limite); $page++) : ?>
             <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
-            <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+            <li class="bg-light page-item <?= ($currentPage == $page) ? "active" : "" ?>">
               <a href="listeQuestion.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
             </li>
           <?php endfor ?>
           <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
-          <li class="page-item <?= ($currentPage == ceil($numLigne / $limite)) ? "disabled" : "" ?>">
+          <li class="bg-light page-item <?= ($currentPage == ceil($numLigne / $limite)) ? "disabled" : "" ?>">
             <a href="listeQuestion.php?page=<?= $currentPage + 1 ?>" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
           </li>
         </ul>
@@ -204,10 +202,16 @@
       
   <!-- Espace de fin -->
   <div class="col-12 mb-5"></div>
+  <!-- Footer -->
+    </div></div>
+  
+  <!-- Fin footer -->
   <!-- Link js -->
   <script src="js/searchBar.js"></script>
   <!-- link bootstrap -->
-  <?php include_once "../controleur/bootstrapJS.php" ?>
+  <?php 
+  include_once "../vue/footer.php";
+  include_once "../controleur/bootstrapJS.php" ?>
 </body>
 
 </html>

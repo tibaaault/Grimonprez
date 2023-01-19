@@ -19,7 +19,9 @@
       <a href="listeQuestion.php"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
     </div>
   </div>
-  <?php include_once "../controleur/bootstrapJS.php" ?>
+  <?php
+  include_once "../vue/footer.php";
+  include_once "../controleur/bootstrapJS.php" ?>
 </body>
 
 </html>

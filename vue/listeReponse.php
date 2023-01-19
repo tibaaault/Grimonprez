@@ -141,7 +141,9 @@
             <!-- Link js -->
             <script src="js/searchBar.js"></script>
             <!-- link bootstrap -->
-            <?php include_once "../controleur/bootstrapJS.php" ?>
+            <?php
+            include_once "../vue/footer.php";
+            include_once "../controleur/bootstrapJS.php" ?>
 </body>
 
 </html>
