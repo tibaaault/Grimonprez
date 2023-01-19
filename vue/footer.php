@@ -1,26 +1,49 @@
   <!-- Lien vers Bootstrap / Connexion BDD / Entete -->
   <?php
-  session_start();
-  include_once "../controleur/bootstrapCSS.php";
-  include_once "../controleur/bddConnect.php";
-  ?>
+    session_start();
+    include_once "../controleur/bootstrapCSS.php";
+    include_once "../controleur/bddConnect.php";
+    ?>
   <!-- Fin lien  -->
+  <footer class="bg-dark text-center text-light">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-8 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase"></h5>
 
-<div class="container">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-muted mx-auto"><b>© 2022 Groupe Blondel</b></p>
+        <p>
+        N'hésitez pas à poser des questions sur l'ecmr, où répondre à certaines questions dont vous avez la réponse.
+        </p>
+      </div>
+      <!--Grid column-->
 
-    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-    </a>
-
-    <ul class="nav col-md-4 justify-content-end text-center mx-auto">
-      <li class="nav-item"><a href="../vue/listeQuestion.php" class="nav-link px-2 text-muted">Accueil</a></li>
-      <li class="nav-item"><a href="../vue/ajoutQuestion.php" class="nav-link px-2 text-muted">Poser une question</a></li>
-    </ul>
-  </footer>
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+        <div class="row text-start">
+            <a href="../vue/listeQuestion.php" class="text-light">Accueil</a>
+            <a href="../vue/ajoutQuestion.php" class="text-light">Poser une question</a>
+            <a href="../vue/ajoutQuestion.php" class="text-light">CGU</a>
+        </div>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
   </div>
-    <!-- Link js -->
-    <script src="js/searchBar.js"></script>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © Groupe Blondel
+  </div>
+  <!-- Copyright -->
+</footer>
   <!-- link bootstrap -->
   <?php include_once "../controleur/bootstrapJS.php" ?>
+
+
+  </body>
+
+  </html>

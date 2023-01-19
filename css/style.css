@@ -1,73 +1,77 @@
-
-
-.backcolor {
-background: whitesmoke!important;
+html,
+body {
+    margin:0;
+    padding:0;
+  height: 100% !important;
 }
 
-.navunder{
-    text-decoration: underline!important;
+    
+.backcolor {
+  background: whitesmoke !important;
+}
+
+.navunder {
+  text-decoration: underline !important;
 }
 
 .tailleFormulaire {
-padding: 30px!important;
+  padding: 30px !important;
 }
 
-@media (max-width : 750px){
-.espace {
-    margin-bottom: 10px!important;
-    display: flex!important;
-    margin:auto!important;
-}
-.centre {
-    display: flex!important;
-    margin:auto!important;
-    margin-top: 10px!important;
-}
-.loupe {
-display: none!important;
-}
-.search__input {
-    padding-left: 0!important;
-    text-align: center!important;
-}
-.ecart{
-    margin-top: 10px!important;
-}
-}
-
-@media (min-width : 750px){
-.ms-6 {
-    margin-left: 5rem!important ;
-    width: fit-content!important;
-
+@media (max-width: 750px) {
+  .espace {
+    margin-bottom: 10px !important;
+    display: flex !important;
+    margin: auto !important;
+  }
+  .centre {
+    display: flex !important;
+    margin: auto !important;
+    margin-top: 10px !important;
+  }
+  .loupe {
+    display: none !important;
+  }
+  .search__input {
+    padding-left: 0 !important;
+    text-align: center !important;
+  }
+  .ecart {
+    margin-top: 10px !important;
+  }
 }
 
+@media (min-width: 750px) {
+  .ms-6 {
+    margin-left: 5rem !important ;
+    width: fit-content !important;
+  }
 }
 
 /* SEARCH */
 .search {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 20px;
 }
 .search__input {
-    width: 20.4rem;
-    height: 3rem;
-    border: none;
-    border-radius: 1rem;
-    font-size: 1.4rem;
-    padding-left: 2.8rem;
-    background: none;
-    color: var(--greyDark);
+  width: 20.4rem;
+  height: 3rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  padding-left: 2.8rem;
+  background: none;
+  color: var(--greyDark);
 }
 .search__input::placeholder {
-    color: var(--greyLight-3);
+  color: var(--greyLight-3);
 }
 .search__input:focus {
-    outline: none;
+  outline: none;
 }
 .search__input:focus + .search__icon {
-    color: var(--primary);
+  color: var(--primary);
 }

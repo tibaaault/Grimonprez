@@ -137,7 +137,7 @@
                 <a href="ajoutReponse.php?rep=1&id=<?php echo $idURL; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary btn-lg" value="Ajouter une réponse"></input></a>
             </div>
             <!-- Espace de fin -->
-            <div class="col-12 mb-5"></div>
+            <div class="col-12 mb-5"></div></div></div>
             <!-- Link js -->
             <script src="js/searchBar.js"></script>
             <!-- link bootstrap -->

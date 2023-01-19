@@ -19,7 +19,7 @@
   ?>
   <!-- Fin lien  -->
   <!-- Card contenant -->
-  <div class="container mt-3">
+  <div class="container mt-3" id="container">
     <div class="row mb-3">
       <div class="col">
         <section class="card">
@@ -29,17 +29,17 @@
               <div class="col-lg-8 ms-lg-5">
                 <h4>Barre de recherche</h4>
                 <form action="listeRecherche.php" method="GET">
-                <div class="mt-3 col-xs-6 col-sm-12 col-md-4 col-lg-6 my-auto">
-                  <div class="input-group">
-                    <div class="form-outline">
-                      <input class="search__input form-control" id="searchbar" onkeyup="chercher()" type="text" name="search" required>
-                      <label class="form-label" for="form1">Chercher par mots clés</label>
+                  <div class="mt-3 col-xs-6 col-sm-12 col-md-4 col-lg-6 my-auto">
+                    <div class="input-group">
+                      <div class="form-outline">
+                        <input class="search__input form-control" id="searchbar" onkeyup="chercher()" type="text" name="search" required>
+                        <label class="form-label" for="form1">Chercher par mots clés</label>
+                      </div>
+                      <button id="btn" type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                      </button>
                     </div>
-                    <button id="btn" type="submit" class="btn btn-primary">
-                      <i class="fas fa-search" ></i>
-                    </button>
                   </div>
-                </div>
                 </form>
               </div>
               <!-- fin barre recherche -->
@@ -62,7 +62,6 @@
         </section>
       </div>
     </div>
-  </div>
   <!-- Fin combo box -->
   <br>
   <?php
@@ -82,7 +81,6 @@
   ?>
 
   <!-- Début accordéon (main) -->
-  <div class="container FirstCon" style="font-family: robotothin">
     <div class="accordion" id="accordionExample">
 
       <!-- Début boucle pour afficher chaque question -->
@@ -112,8 +110,8 @@
       ?>
             <!-- 1 Module Accordéon / recherche correspond au code de la searchBar -->
             <div class="accordion-item <?php if ($pageURL != 1 and $i == 0) {
-                                                                        echo 'd-none';
-                                                                      } ?>">
+                                          echo 'd-none';
+                                        } ?>">
               <h2 class="accordion-header" id="heading<?php echo $i; ?>">
                 <!-- backcolor est dans le fichier css -->
                 <button class="accordion-button text-black backcolor" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapse<?php echo $i; ?>" aria-expanded="<?php echo ($i == $tour) ? 'true' : 'false'; ?>" aria-controls="collapse<?php echo $i; ?>">
@@ -199,19 +197,20 @@
         </ul>
       </nav>
       <!-- Fin pagination -->
-      
-  <!-- Espace de fin -->
-  <div class="col-12 mb-5"></div>
-  <!-- Footer -->
-    </div></div>
-  
+
+      <!-- Espace de fin -->
+      <div class="col-12 mb-5"></div>
+      <!-- Footer -->
+    </div>
+    
+  </div>
   <!-- Fin footer -->
   <!-- Link js -->
   <script src="js/searchBar.js"></script>
   <!-- link bootstrap -->
-  <?php 
-  include_once "../vue/footer.php";
+  <?php
   include_once "../controleur/bootstrapJS.php" ?>
 </body>
+<?php include_once "../vue/footer.php";?>
 
 </html>
