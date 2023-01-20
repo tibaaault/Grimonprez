@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Forum</title>
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="search.scss">
 </head>
 
 <body>
@@ -37,8 +36,6 @@
             <div class="card-body">
                 <p><strong>Modification des conditions d’utilisation</strong></p>
                 <p>L’EDITEUR se réserve la possibilité de modifier, à tout moment et sans préavis, les présentes conditions d’utilisation afin de les adapter aux évolutions du site et/ou de son exploitation.</p>
-                <p>L’EDITEUR se réserve la possibilité de modifier, supprimer, à tout moment et sans préavis, les questions et réponses allant à l'encontre de l'éthique de l'entreprise.</p>
-
             </div>
         </section>
         <section class="card mb-4 border">
@@ -54,8 +51,19 @@
                 <p>L’utilisateur s'engage à ne pas promulger, publier ; d'injures, de mots offensant, discriminatoire ou à caractère sexuel. </p>
             </div>
         </section>
+        <section class="card mb-4 border">
+            <div class="card-body">
+                <p><strong>Modération</p></strong>
+                <p>L’EDITEUR se réserve la possibilité de modifier, à tout moment et sans préavis, les questions et réponses allant à l'encontre de l'éthique de l'entreprise.</p>
+                <p>La modération se réserve en particulier le droit de : </p>
+                <ul>
+                    <li>Fermer un sujet pour stopper un dérapage général de la discussion ;</li>
+                    <li>Supprimer la totalité d'un sujet si le message de lancement ne respecte pas la Charte ;</li>
+                    <li>Corriger un titre pour le rendre plus explicite, plus concis ou plus lisible ;</li>
+                </ul>
+            </div>
+        </section>
     </div>
-
     <!-- Espace de fin -->
     <div class="col-12 mb-5"></div>
 
