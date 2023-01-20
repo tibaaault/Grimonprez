@@ -29,6 +29,11 @@
   $reponse = addslashes($reponse);
   //Ajouter la première lettre de la réponse en majuscule
   $reponse = ucfirst($reponse);
+  //Remplacer les <>> en ()
+  $reponse = str_replace("<", "(", $reponse);
+  $reponse = str_replace(">", ")", $reponse);
+  // Ajouter un br derriere chaque point
+  $reponse = str_replace("\n", "<br>", $reponse);
   // récupérer le prénom
   $prenom = $_POST['prenom'];
   // Ajouter la première lettre du prénom en majuscule

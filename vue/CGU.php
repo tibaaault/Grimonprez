@@ -57,9 +57,9 @@
                 <p>L’EDITEUR se réserve la possibilité de modifier, à tout moment et sans préavis, les questions et réponses allant à l'encontre de l'éthique de l'entreprise.</p>
                 <p>La modération se réserve en particulier le droit de : </p>
                 <ul>
-                    <li>Fermer un sujet pour stopper un dérapage général de la discussion ;</li>
-                    <li>Supprimer la totalité d'un sujet si le message de lancement ne respecte pas la Charte ;</li>
-                    <li>Corriger un titre pour le rendre plus explicite, plus concis ou plus lisible ;</li>
+                    <li>Fermer un sujet pour stopper un dérapage général de la discussion </li>
+                    <li>Supprimer la totalité d'un sujet si le message de lancement ne respecte pas la Charte </li>
+                    <li>Corriger un titre pour le rendre plus explicite, plus concis ou plus lisible </li>
                 </ul>
             </div>
         </section>

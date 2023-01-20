@@ -175,7 +175,7 @@
 
 
             <!-- Espace de fin -->
-            <div class="col-12 mb-5"></div>
+            <div class="col-12 mb-5"></div></div></div>
             <!-- Link js -->
             <script src="js/searchBar.js"></script>
             <!-- link bootstrap -->

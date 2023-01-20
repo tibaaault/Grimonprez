@@ -198,12 +198,12 @@
       </nav>
       <!-- Fin pagination -->
 
+    </div>
+  </div>
       <!-- Espace de fin -->
       <div class="col-12 mb-5"></div>
       <!-- Footer -->
-    </div>
     
-  </div>
   <!-- Fin footer -->
   <!-- Link js -->
   <script src="js/searchBar.js"></script>

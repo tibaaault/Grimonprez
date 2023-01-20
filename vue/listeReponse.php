@@ -143,7 +143,7 @@
             <!-- link bootstrap -->
             <?php
             include_once "../vue/footer.php";
-            include_once "../controleur/bootstrapJS.php" ?>
+            include_once "../controleur/bootstrapJS.php"; ?>
 </body>
 
 </html>
