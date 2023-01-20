@@ -31,7 +31,7 @@
         <div class="row text-start">
             <a href="../vue/listeQuestion.php" class="text-light">Accueil</a>
             <a href="../vue/ajoutQuestion.php" class="text-light">Poser une question</a>
-            <a href="../vue/ajoutQuestion.php" class="text-light">CGU</a>
+            <a href="../vue/CGU.php" class="text-light">CGU</a>
         </div>
       </div>
       <!--Grid column-->
