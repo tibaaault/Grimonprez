@@ -17,11 +17,20 @@
   include_once "../controleur/bootstrapCSS.php";
   include_once "../controleur/bddConnect.php";
   include "entete.php";
+  $admin = $_GET['admin'];
   ?>
   <div class="container-fluid">
     <div class="col-xl-8 col-xs-12 mx-auto text-center border border-2 border-dark p-3">
       <p class="lead">Votre question à bien été prise en compte</p><br>
-      <a href="listeQuestion.php"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
+      <?php
+      if ($admin == "05lrM3") { ?>
+        <a href="admin.php<?= ($_GET['admin'] == "05lrM3") ? "?admin=05lrM3" : "" ?>"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
+      <?php
+      } else { ?>
+        <a href="listeQuestion.php"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
+      <?php
+      }
+      ?>
     </div>
   </div>
   <?php

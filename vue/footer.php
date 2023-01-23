@@ -21,7 +21,7 @@
         <h5 class="text-uppercase"></h5>
 
         <p>
-        N'hésitez pas à poser des questions sur l'ecmr, où répondre à certaines questions dont vous avez la réponse.
+        N'hésitez pas à poser des questions sur l'eCMR, ou répondre à certaines questions auquelles vous avez la réponse.
         </p>
       </div>
       <!--Grid column-->
@@ -29,9 +29,9 @@
       <!--Grid column-->
       <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
         <div class="row text-start">
-            <a href="../vue/listeQuestion.php" class="text-light">Accueil</a>
-            <a href="../vue/ajoutQuestion.php" class="text-light">Poser une question</a>
-            <a href="../vue/CGU.php" class="text-light">CGU</a>
+            <a <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/admin.php?admin=05lrM3"';} else{ echo 'href="../vue/listeQuestion.php"';}?> class="text-light">Accueil</a>
+            <a <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/ajoutQuestion.php?admin=05lrM3"';} else{echo 'href="../vue/ajoutQuestion.php"';}?> class="text-light">Poser une question</a>
+            <a <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/CGU.php?admin=05lrM3"';} else{echo 'href="../vue/CGU.php"';}?> class="text-light">CGU</a>
         </div>
       </div>
       <!--Grid column-->
@@ -42,7 +42,9 @@
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+  <a href="https://www.groupe-blondel.com" class=" text-light">
     © Groupe Blondel
+  </a>
   </div>
   <!-- Copyright -->
 </footer>

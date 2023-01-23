@@ -20,13 +20,7 @@
   include_once "../controleur/bootstrapCSS.php";
   include_once "../controleur/bddConnect.php";
   include "entete.php";
-
-  //Récupérer l'id et la question du fichier listeQuestion.php
-  // $idURL = $_GET['id'];
-  // Récuper le numéro rep dans l'url
-  // $repLien = $_GET['rep'];
-  // Select la question grâce à l'id du lien
-  // $selectQuestion = mysqli_query($db, "SELECT * FROM Questions WHERE id = $idURL");
+  $admin = $_GET['admin'];
 
   ?>
   <br>
@@ -34,7 +28,7 @@
     <!-- bg correspond au background / mx-auto (margin-auto) / rounded (border-radius) -->
     <div class="bg-light col-xl-8 col-xs-12 mx-auto text-center border border-2 border-dark p-3 rounded-9">
       <!-- Formulaire pour récupérer les informations qui vont être rentrées -->
-      <form class="form form-group" action="ajoutQuestion.php" method="POST">
+      <form class="form form-group" action="ajoutQuestion.php<?= ($_GET['admin'] == "05lrM3") ? "?admin=05lrM3" : "" ?>" method="POST">
 
         <!-- Case question -->
         <label class="lead">Écrire la question ci-dessous </label><label class="text-danger">*</label><br><br>
@@ -77,7 +71,11 @@
             // $to = 'troelstrate@gmail.com';
             // $object = "Ajout d\'une question FAQ";
             // mail($to, $object, $question);
-            header('Location: validationQuestion.php');
+            if ($_GET['admin'] == "05lrM3") {
+              header('Location: validationQuestion.php?admin=05lrM3');
+            } else {
+              header('Location: validationQuestion.php');
+            }
           }
         }
 

@@ -21,6 +21,7 @@
   $idURL = $_GET['id'];
   // Récuper le numéro rep dans l'url
   $repLien = $_GET['rep'];
+  $admin = $_GET['admin'];
   // Select la question grâce à l'id du lien
   $selectQuestion = mysqli_query($db, "SELECT * FROM Questions WHERE id = $idURL");
   // récupérer la réponse écrite
@@ -42,6 +43,8 @@
   $messageErreur = "<p style='color:red'><i class='fas fa-exclamation-triangle'></i>Veuillez remplir le champ texte";
   $erreur = 0;
 
+
+
   // Quand le bouton est préssé
   if (isset($_POST['valider']) and $_POST['valider'] == 'Envoyer') {
     // Vérifier si il y a du texte dans la case réponse, si non, alors afficher Veuillez ...
@@ -55,14 +58,20 @@
         // Requete pour ajouter une ligne a la base de donné puisqu'il y a déjà une réponse
         $reqInsert = "INSERT INTO MultiReponse (idQ, reponse, prenom, date) VALUES ($idURL,'" . $reponse . "', '" . $prenom . "', now())";
         mysqli_query($db, $reqInsert);
-        header('Location: validationReponse.php');
-        exit;
-      } else {
+        if ($_GET['admin'] == "05lrM3") {
+          header('Location: validationReponse.php?admin=05lrM3');
+        } else {
+          header('Location: validationReponse.php');
+        }
+    } else {
         // Modifier la ligne de la question puisqu'il n'y a pas encore de réponse
         $reqAlter = "UPDATE Questions SET reponse =' $reponse', prenom = ' $prenom ', date = now() WHERE id =$idURL";
         mysqli_query($db, $reqAlter);
-        header('Location: validationReponse.php');
-        exit;
+        if ($_GET['admin'] == "05lrM3") {
+          header('Location: validationReponse.php?admin=05lrM3');
+        } else {
+          header('Location: validationReponse.php');
+        }
       }
     }
   }
@@ -71,7 +80,7 @@
     <!-- bg correspond au background / mx-auto (margin-auto) / rounded (border-radius) -->
     <div class="bg-light col-xl-8 col-xs-12 mx-auto text-center border border-2 border-dark p-3 rounded-9">
       <!-- Formulaire pour récupérer les informations qui vont être rentrées -->
-      <form class="form form-group" action="ajoutReponse.php?rep=<?php echo $repLien ?>&id=<?php echo $idURL; ?>" method="POST">
+      <form class="form form-group" action="ajoutReponse.php?rep=<?php echo $repLien ?>&id=<?php echo $idURL; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=$admin" : "" ?>" method="POST">
         <p class="text-dark h3 ">
           <br>
           <?php

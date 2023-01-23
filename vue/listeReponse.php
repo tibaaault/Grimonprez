@@ -120,6 +120,13 @@
                                         </em>
                                     </div>
                                     <!-- Fin réponse -->
+                                    <?php if ($_GET['admin'] == "05lrM3"){?>
+                                <!-- Bouton supp admin -->
+                                <div class="col-12 lead ms-6 mb-2">
+                                    <!-- Bouton supp réponse -->
+                                    <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&mr=2&idR=<?php echo $ligne['idR'];?>"><input type="submit" name="supprimerReponse" class="espace btn btn-primary mb-2" value="Supprimer réponse"></input></a>
+                                </div>
+                                <?php }  ?>
                                 </div>
                             </div>
                         </div>
@@ -134,16 +141,18 @@
             <div class="col-12 mb-5"></div>
             <!-- Bouton ajouter une reponse -->
             <div class="col-12 text-center">
-                <a href="ajoutReponse.php?rep=1&id=<?php echo $idURL; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary btn-lg" value="Ajouter une réponse"></input></a>
+                <a href="ajoutReponse.php?rep=1&id=<?php echo $idURL; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary btn-lg" value="Ajouter une réponse"></input></a>
             </div>
             <!-- Espace de fin -->
-            <div class="col-12 mb-5"></div></div></div>
-            <!-- Link js -->
-            <script src="js/searchBar.js"></script>
-            <!-- link bootstrap -->
-            <?php
-            include_once "../vue/footer.php";
-            include_once "../controleur/bootstrapJS.php"; ?>
+            <div class="col-12 mb-5"></div>
+        </div>
+    </div>
+    <!-- Link js -->
+    <script src="js/searchBar.js"></script>
+    <!-- link bootstrap -->
+    <?php
+    include_once "../vue/footer.php";
+    include_once "../controleur/bootstrapJS.php"; ?>
 </body>
 
 </html>

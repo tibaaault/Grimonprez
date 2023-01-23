@@ -120,15 +120,24 @@
                                                 <?php
                                                 // Si le résultat a une réponse mais pas de prénom, afficher la réponse + le bouton
                                                 echo $resultat['reponse'];
-                                                ?> <br><br><a href="ajoutReponse.php?rep=1&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary" value="Ajouter une réponse"></input></a>
-                                                <a href="listeReponse.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary md" value="Voir + de réponse"></input></a>
-                                            <?php
+                                                ?> <br><br><a href="ajoutReponse.php?rep=1&id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
+                                                <a href="listeReponse.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary mb-2" value="Voir + de réponse"></input></a>
+                                                <?php if ($_GET['admin'] == "05lrM3") { ?>
+                                                    <!-- Bouton supp réponse -->
+                                                    <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&r=2"><input type="submit" name="supprimerReponse" class="espace btn btn-primary mb-2" value="Supprimer réponse"></input></a>
+                                                    <!-- Bouton supp question -->
+                                                    <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&q=2"><input type="submit" name="supprimerQuestion" class="espace btn btn-primary mb-2" value="Supprimer question"></input></a>
+                                                <?php
+                                                }
                                             }
                                             // Si le résultat n'a pas de réponse, afficher juste le bouton
                                             else {
-                                            ?><a href="ajoutReponse.php?rep=0&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary" value="Ajouter une réponse"></input></a>
+                                                ?><a href="ajoutReponse.php?rep=0&id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
+                                                <?php if ($_GET['admin'] == "05lrM3") { ?>
+
+                                                <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&q=2"><input type="submit" name="supprimerQuestion" class="espace btn btn-primary mb-2" value="Supprimer question"></input></a>
                                             <?php
-                                            }
+                                            }}
                                             ?>
                                         </div>
                                     </div>
@@ -156,18 +165,18 @@
                 <ul class="justify-content-center pagination">
                     <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
                     <li class="page-item <?= ($currentPageQ == 1) ? "disabled" : "" ?>">
-                        <a href="listeRecherche.php?page=<?= $currentPageQ - 1 ?>&search=<?php echo $laRechercheURL ?>" class="page-link">
+                        <a href="listeRecherche.php?page=<?= $currentPageQ - 1 ?>&search=<?php echo $laRechercheURL ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>" class="page-link">
                             < Précédente</a>
                     </li>
                     <?php for ($pageQ = 1; $pageQ <= ceil($numLigne / $limite); $pageQ++) : ?>
                         <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                         <li class="page-item <?= ($currentPageQ == $pageQ) ? "active" : "" ?>">
-                            <a href="listeRecherche.php?page=<?= $pageQ ?>&search=<?php echo $laRechercheURL ?>" class="page-link"><?= $pageQ ?></a>
+                            <a href="listeRecherche.php?page=<?= $pageQ ?>&search=<?php echo $laRechercheURL ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>" class="page-link"><?= $pageQ ?></a>
                         </li>
                     <?php endfor ?>
                     <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
                     <li class="page-item <?= ($currentPageQ == ceil($numLigne / $limite)) ? "disabled" : "" ?>">
-                        <a href="listeRecherche.php?page=<?= $currentPageQ + 1 ?>&search=<?php echo $laRechercheURL ?>" class="page-link">Suivante ></a>
+                        <a href="listeRecherche.php?page=<?= $currentPageQ + 1 ?>&search=<?php echo $laRechercheURL ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>" class="page-link">Suivante ></a>
                     </li>
                 </ul>
             </nav>
@@ -175,13 +184,15 @@
 
 
             <!-- Espace de fin -->
-            <div class="col-12 mb-5"></div></div></div>
-            <!-- Link js -->
-            <script src="js/searchBar.js"></script>
-            <!-- link bootstrap -->
-            <?php
-            include_once "../vue/footer.php";
-            include_once "../controleur/bootstrapJS.php" ?>
+            <div class="col-12 mb-5"></div>
+        </div>
+    </div>
+    <!-- Link js -->
+    <script src="js/searchBar.js"></script>
+    <!-- link bootstrap -->
+    <?php
+    include_once "../vue/footer.php";
+    include_once "../controleur/bootstrapJS.php" ?>
 </body>
 
 </html>
