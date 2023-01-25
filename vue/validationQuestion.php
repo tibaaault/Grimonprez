@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Validation de la question</title>
   <style>
-    .container-fluid{
-        height: 65%!important
+    .container-fluid {
+      height: 65% !important
     }
-</style>
+  </style>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
         <a href="admin.php<?= ($_GET['admin'] == "05lrM3") ? "?admin=05lrM3" : "" ?>"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
       <?php
       } else { ?>
-        <a href="listeQuestion.php"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
+        <a href="index.php"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
       <?php
       }
       ?>

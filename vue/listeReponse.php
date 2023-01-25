@@ -120,13 +120,13 @@
                                         </em>
                                     </div>
                                     <!-- Fin réponse -->
-                                    <?php if ($_GET['admin'] == "05lrM3"){?>
-                                <!-- Bouton supp admin -->
-                                <div class="col-12 lead ms-6 mb-2">
-                                    <!-- Bouton supp réponse -->
-                                    <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&mr=2&idR=<?php echo $ligne['idR'];?>"><input type="submit" name="supprimerReponse" class="espace btn btn-primary mb-2" value="Supprimer réponse"></input></a>
-                                </div>
-                                <?php }  ?>
+                                    <?php if ($_GET['admin'] == "05lrM3") { ?>
+                                        <!-- Bouton supp admin -->
+                                        <div class="col-12 lead ms-6 mb-2">
+                                            <!-- Bouton supp réponse -->
+                                            <a href="validationSupp.php?id=<?php echo $idURL; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&mr=2&idR=<?php echo $ligne['idR']; ?>"><input type="submit" name="supprimerReponse" class="espace btn btn-primary mb-2" value="Supprimer réponse"></input></a>
+                                        </div>
+                                    <?php }  ?>
                                 </div>
                             </div>
                         </div>

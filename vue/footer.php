@@ -29,7 +29,7 @@
       <!--Grid column-->
       <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
         <div class="row text-start">
-            <a <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/admin.php?admin=05lrM3"';} else{ echo 'href="../vue/listeQuestion.php"';}?> class="text-light">Accueil</a>
+            <a <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/admin.php?admin=05lrM3"';} else{ echo 'href="../vue/index.php"';}?> class="text-light">Accueil</a>
             <a <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/ajoutQuestion.php?admin=05lrM3"';} else{echo 'href="../vue/ajoutQuestion.php"';}?> class="text-light">Poser une question</a>
             <a <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/CGU.php?admin=05lrM3"';} else{echo 'href="../vue/CGU.php"';}?> class="text-light">CGU</a>
         </div>

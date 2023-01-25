@@ -18,19 +18,12 @@ body {
   padding: 30px !important;
 }
 
-@media (max-width: 750px) {
-  .espace {
-    margin-bottom: 10px !important;
-    display: flex !important;
-    margin: auto !important;
-  }
-  .centre {
-    display: flex !important;
-    margin: auto !important;
-    margin-top: 10px !important;
-  }
+@media (max-width: 767px) {
   .loupe {
     display: none !important;
+  }
+  .texte{
+   text-align: center!important;
   }
   .search__input {
     padding-left: 0 !important;

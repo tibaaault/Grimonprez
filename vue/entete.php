@@ -18,13 +18,13 @@
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0 text-center" <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/admin.php?admin=05lrM3"';} else{ echo 'href="../vue/listeQuestion.php"';}?>>
+        <a class="navbar-brand mt-2 mt-lg-0 text-center" <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/admin.php?admin=05lrM3"';} else{ echo 'href="../vue/index.php"';}?>>
           <img src="../image/logo.png" height="60" loading="lazy" alt="Image Groupe Blondel" />
         </a>
         <!-- Left links -->
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link pe-3" <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/admin.php?admin=05lrM3"';} else{ echo 'href="../vue/listeQuestion.php"';}?>><b>Accueil</b></a>
+            <a class="nav-link pe-3" <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/admin.php?admin=05lrM3"';} else{ echo 'href="../vue/index.php"';}?>><b>Accueil</b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link pe-3" <?php if($_GET['admin']=="05lrM3"){ echo 'href="../vue/ajoutQuestion.php?admin=05lrM3"';} else{echo 'href="../vue/ajoutQuestion.php"';}?>><b>Poser une question</b></a>

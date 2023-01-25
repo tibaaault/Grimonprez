@@ -23,9 +23,10 @@
         $email = $_POST['utilisateur'];
         $mdp = $_POST['mdp'];
         $mdpHash = md5($mdp);
+        
 
         if ($email !== "" && $mdp !== "") {
-            $req = "SELECT count(*) FROM admin WHERE utilisateur = '" . $email . "' and mdp = '" . $mdp . "' ";
+            $req = "SELECT count(*) FROM admin WHERE utilisateur = '" . $email . "' and mdp = '" . $mdpHash . "' ";
             $exec_requete = mysqli_query($db, $req);
             $reponse = mysqli_fetch_array($exec_requete);
             $count = $reponse['count(*)'];

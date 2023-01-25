@@ -32,8 +32,7 @@
                     <br>
                 </form>
                 <?php
-                $mdp = $_POST['mdp'];
-                $mdp = md5($mdp);
+            
                 if (isset($_GET['erreur'])) {
                     $err = $_GET['erreur'];
                     if ($err == 1 || $err == 2)

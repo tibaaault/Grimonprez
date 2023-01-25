@@ -28,7 +28,7 @@
         <a href="admin.php?admin=05lrM3"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
       <?php
       } else { ?>
-        <a href="listeQuestion.php"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
+        <a href="index.php"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
       <?php
       }
       ?>

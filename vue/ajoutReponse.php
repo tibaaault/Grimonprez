@@ -96,7 +96,7 @@
           <div class="col-12 col-sm-10 col-md-4 col-lg-3">
             <!-- Case prénom -->
             <label>Prénom (Facultatif)</label>
-            <input type="text" class="form-control" placeholder="Henry" name="prenom" />
+            <input type="text" class="form-control" placeholder="Henry" name="prenom" <?php if ($_GET['admin']== "05lrM3"){ echo "value='Administrateur'"; echo "readonly";}?>/>
             <!-- Fin case prénom -->
           </div>
         </div>

@@ -41,20 +41,28 @@
                 <div class="accordion" id="accordionExample">
 
                     <!-- Début boucle pour afficher chaque question -->
-                    <?php
-                    echo "<div class='container'><div class='col-12'>";
-                    echo "<p class='h3 text-center mb-5 lead'><b><u>Recherche : " . $laRechercheURL . "</u></b></h1>";
-                    echo "</div>";
-                    if ($numLigne == 0) {
-                        echo '<section class="card shadow-lg mb-5 rounded">
-                                    <div class="card-body">
+                    <div class='container text-center'>
+                        <div class='col-12'>
+                            <p class='h3 text-center mb-5 lead'><b><u>Recherche : <?php $laRechercheURL ?></u></b></h1>
+                        </div>
+                        <?php
+                        if ($numLigne == 0) { ?>
+                            <section class="card shadow-lg mb-5 rounded">
+                                <div class="card-body">
                                     <p class="h1 text-center lead">
-                                    Aucun résultat
+                                        Aucun résultat
                                     </p>
-                                    </div>
-                                </section>';
-                    }
-                    echo "</div>";
+                                </div>
+                            </section>
+                            <?php
+                            if ($_GET['admin'] == "05lrM3") { ?>
+                                <a href="admin.php?<?= ($_GET["admin"] =  "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="supprimerQuestion" class="btn btn-primary mb-2" value="Retour à l'accueil"></input></a>
+                            <?php } else { ?>
+                                <a href="index.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="supprimerQuestion" class="btn btn-primary mb-2" value="Retour à l'accueil"></input></a>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+                    <?php
                     //Déterminer la page dans laquelle on est
                     if (isset($_GET['page']) && !empty($_GET['page'])) {
                         $currentPageQ = (int) strip_tags($_GET['page']);
@@ -120,27 +128,43 @@
                                                 <?php
                                                 // Si le résultat a une réponse mais pas de prénom, afficher la réponse + le bouton
                                                 echo $resultat['reponse'];
-                                                ?> <br><br><a href="ajoutReponse.php?rep=1&id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
-                                                <a href="listeReponse.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary mb-2" value="Voir + de réponse"></input></a>
-                                                <?php if ($_GET['admin'] == "05lrM3") { ?>
-                                                    <!-- Bouton supp réponse -->
-                                                    <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&r=2"><input type="submit" name="supprimerReponse" class="espace btn btn-primary mb-2" value="Supprimer réponse"></input></a>
-                                                    <!-- Bouton supp question -->
-                                                    <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&q=2"><input type="submit" name="supprimerQuestion" class="espace btn btn-primary mb-2" value="Supprimer question"></input></a>
-                                                <?php
+                                                ?> <br><br>
+                                                <div class="container">
+                                                    <div class="row-md col-ms-4 mx-auto texte">
+                                                        <a href="ajoutReponse.php?rep=1&id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
+                                                        <a href="listeReponse.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary mb-2" value="Voir + de réponse"></input></a>
+                                                        <?php if ($_GET['admin'] != "05lrM3") { ?>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+                                            <?php if ($_GET['admin'] == "05lrM3") { ?>
+                                                <!-- Bouton supp réponse -->
+                                                <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&r=2"><input type="submit" name="supprimerReponse" class="espace btn btn-primary mb-2" value="Supprimer réponse"></input></a>
+                                                <!-- Bouton supp question -->
+                                                <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&q=2"><input type="submit" name="supprimerQuestion" class="espace btn btn-primary mb-2" value="Supprimer question"></input></a>
+                                        </div>
+                                    </div>
+                                <?php
                                                 }
                                             }
                                             // Si le résultat n'a pas de réponse, afficher juste le bouton
                                             else {
-                                                ?><a href="ajoutReponse.php?rep=0&id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
-                                                <?php if ($_GET['admin'] == "05lrM3") { ?>
-
-                                                <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&q=2"><input type="submit" name="supprimerQuestion" class="espace btn btn-primary mb-2" value="Supprimer question"></input></a>
-                                            <?php
-                                            }}
-                                            ?>
-                                        </div>
+                                ?>
+                                <div class="container">
+                                    <div class="row-md col-ms-4 mx-auto texte">
+                                        <a href="ajoutReponse.php?rep=0&id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
+                                        <?php if ($_GET['admin'] != "05lrM3") { ?>
+                                    </div></div>
+                                    <?php } ?>
+                                        <?php if ($_GET['admin'] == "05lrM3") { ?>
+                                            <a href="validationSupp.php?id=<?php echo $idQuestion; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&q=2"><input type="submit" name="supprimerQuestion" class="espace btn btn-primary mb-2" value="Supprimer question"></input></a>
+                                </div></div>
+                                    <?php
+                                                }
+                                            }
+                                    ?>
                                     </div>
+                                </div>
                                 </div>
                     <?php
                                 //Définir $tour pour afficher les lignes

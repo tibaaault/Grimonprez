@@ -62,25 +62,25 @@
         </section>
       </div>
     </div>
-  <!-- Fin combo box -->
-  <br>
-  <?php
-  //Requete bdd
+    <!-- Fin combo box -->
+    <br>
+    <?php
+    //Requete bdd
 
-  $ligne = "SELECT * FROM Questions ORDER BY id ASC";
-  $result = mysqli_query($db, $ligne);
+    $ligne = "SELECT * FROM Questions ORDER BY id ASC";
+    $result = mysqli_query($db, $ligne);
 
-  // On récupère le nombre de lignes
-  $reqCount = "SELECT COUNT(*) AS nbr_ligne FROM Questions";
-  $reqCount = mysqli_query($db, $reqCount);
-  $tableau = mysqli_fetch_assoc($reqCount);
-  $numLigne = $tableau['nbr_ligne'];
+    // On récupère le nombre de lignes
+    $reqCount = "SELECT COUNT(*) AS nbr_ligne FROM Questions";
+    $reqCount = mysqli_query($db, $reqCount);
+    $tableau = mysqli_fetch_assoc($reqCount);
+    $numLigne = $tableau['nbr_ligne'];
 
-  // $ligne = $bdd1->prepare("SELECT * FROM Questions ORDER BY id ASC");
-  // $ligne = execute-> (array());
-  ?>
+    // $ligne = $bdd1->prepare("SELECT * FROM Questions ORDER BY id ASC");
+    // $ligne = execute-> (array());
+    ?>
 
-  <!-- Début accordéon (main) -->
+    <!-- Début accordéon (main) -->
     <div class="accordion" id="accordionExample">
 
       <!-- Début boucle pour afficher chaque question -->
@@ -148,13 +148,23 @@
                     <?php
                     // Si le résultat a une réponse mais pas de prénom, afficher la réponse + le bouton
                     echo $resultat['reponse'];
-                    ?> <br><br><a href="ajoutReponse.php?rep=1&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary" value="Ajouter une réponse"></input></a>
-                    <a href="listeReponse.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary md" value="Voir + de réponse"></input></a>
+                    ?> <br><br>
+                    <div class="container">
+                      <div class="row-md col-ms-4 mx-auto texte">
+                        <a href="ajoutReponse.php?rep=1&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
+                        <a href="listeReponse.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary mb-2" value="Voir + de réponse"></input></a>
+                      </div>
+                    </div>
                   <?php
                   }
                   // Si le résultat n'a pas de réponse, afficher juste le bouton
                   else {
-                  ?><a href="ajoutReponse.php?rep=0&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary" value="Ajouter une réponse"></input></a>
+                  ?>
+                    <div class="container">
+                      <div class="row-md col-ms-4 mx-auto texte">
+                        <a href="ajoutReponse.php?rep=0&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
+                      </div>
+                    </div>
                   <?php
                   }
                   ?>
@@ -182,17 +192,17 @@
         <ul class="justify-content-center pagination ">
           <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
           <li class="bg-light page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
-            <a href="listeQuestion.php?page=<?= $currentPage - 1 ?>" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+            <a href="index.php?page=<?= $currentPage - 1 ?>" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
           </li>
           <?php for ($page = 1; $page <= ceil($numLigne / $limite); $page++) : ?>
             <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
             <li class="bg-light page-item <?= ($currentPage == $page) ? "active" : "" ?>">
-              <a href="listeQuestion.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+              <a href="index.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
             </li>
           <?php endfor ?>
           <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
           <li class="bg-light page-item <?= ($currentPage == ceil($numLigne / $limite)) ? "disabled" : "" ?>">
-            <a href="listeQuestion.php?page=<?= $currentPage + 1 ?>" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+            <a href="index.php?page=<?= $currentPage + 1 ?>" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
           </li>
         </ul>
       </nav>
@@ -200,10 +210,10 @@
 
     </div>
   </div>
-      <!-- Espace de fin -->
-      <div class="col-12 mb-5"></div>
-      <!-- Footer -->
-    
+  <!-- Espace de fin -->
+  <div class="col-12 mb-5"></div>
+  <!-- Footer -->
+
   <!-- Fin footer -->
   <!-- Link js -->
   <script src="js/searchBar.js"></script>
@@ -211,6 +221,6 @@
   <?php
   include_once "../controleur/bootstrapJS.php" ?>
 </body>
-<?php include_once "../vue/footer.php";?>
+<?php include_once "../vue/footer.php"; ?>
 
 </html>
