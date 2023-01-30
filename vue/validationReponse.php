@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Validation de la réponse</title>
+  <link rel="stylesheet" href="../css/style.css">
   <style>
     .container-fluid {
       height: 65% !important
@@ -28,7 +29,7 @@
         <a href="admin.php?admin=05lrM3"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
       <?php
       } else { ?>
-        <a href="index.php"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
+        <a href="../index.php"><input class="btn btn-primary" name="valider" type="submit" value="Retour à l'accueil" /></a>
       <?php
       }
       ?>

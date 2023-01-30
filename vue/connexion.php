@@ -32,12 +32,12 @@
                     <br>
                 </form>
                 <?php
-            
+
                 if (isset($_GET['erreur'])) {
                     $err = $_GET['erreur'];
                     if ($err == 1 || $err == 2)
-                    echo $_POST['utilisateur'];
-                        echo "<p style='color:red'>Mot de passe incorrect</p>";
+                        echo $_POST['utilisateur'];
+                    echo "<p style='color:red'>Mot de passe incorrect</p>";
                 }
                 ?>
             </div>

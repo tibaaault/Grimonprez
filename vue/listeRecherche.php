@@ -58,7 +58,7 @@
                             if ($_GET['admin'] == "05lrM3") { ?>
                                 <a href="admin.php?<?= ($_GET["admin"] =  "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="supprimerQuestion" class="btn btn-primary mb-2" value="Retour à l'accueil"></input></a>
                             <?php } else { ?>
-                                <a href="index.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="supprimerQuestion" class="btn btn-primary mb-2" value="Retour à l'accueil"></input></a>
+                                <a href="../index.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="supprimerQuestion" class="btn btn-primary mb-2" value="Retour à l'accueil"></input></a>
                             <?php } ?>
                         <?php } ?>
                     </div>

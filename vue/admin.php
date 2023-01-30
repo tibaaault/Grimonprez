@@ -237,9 +237,9 @@
     <?php
     include_once "../controleur/bootstrapJS.php" ?>
 </body>
-<?php include_once "../vue/footer.php";
+<?php include_once "footer.php";
   } else {
-    header('Location: index.php');
+    header('Location: ../index.php');
   }
 ?>
 

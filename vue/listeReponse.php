@@ -16,17 +16,28 @@
     ?>
     <!-- Barre de recherche -->
     <div class='container'>
-        <div class=" content-wrapper">
-            <div class="row text-center ">
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="search">
-                        <input class="search__input" id="searchbar" onkeyup="chercher()" type="text" name="search" placeholder="Chercher par mots clés">
-                        <i class="loupe fas fa-lg fa-search"></i>
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-8">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+                        <div class="search">
+                            <input class="search__input" id="searchbar" onkeyup="chercher()" type="text" name="search" placeholder="Chercher par mots clés">
+                            <i class="loupe fas fa-lg fa-search"></i>
+                        </div>
                     </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-xl-center">
+                    <!-- Bouton supp réponse -->
+                    <?php if ($_GET['admin'] == "05lrM3") { ?>
+                        <a href="admin.php?id=<?php echo $idURL; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="retour" class="ecart2 btn btn-primary" value="Retour à l'accueil"></input></a>
+                    <?php } else { ?>
+                        <a href="../index.php?id=<?php echo $idURL; ?>"><input type="submit" name="retour" class="ecart2 btn btn-primary" value="Retour à l'accueil"></input></a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
-        <br><br>
+    </div>
+        <br>
         <!-- Fin barre de recherche -->
 
 
@@ -124,7 +135,7 @@
                                         <!-- Bouton supp admin -->
                                         <div class="col-12 lead ms-6 mb-2">
                                             <!-- Bouton supp réponse -->
-                                            <a href="validationSupp.php?id=<?php echo $idURL; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&mr=2&idR=<?php echo $ligne['idR']; ?>"><input type="submit" name="supprimerReponse" class="espace btn btn-primary mb-2" value="Supprimer réponse"></input></a>
+                                            <a href="validationSupp.php?id=<?php echo $idURL; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>&mr=2&idR=<?php echo $ligne['idR']; ?>"><input type="submit" name="supprimerReponse" class="btn btn-primary mb-2" value="Supprimer réponse"></input></a>
                                         </div>
                                     <?php }  ?>
                                 </div>
@@ -141,7 +152,7 @@
             <div class="col-12 mb-5"></div>
             <!-- Bouton ajouter une reponse -->
             <div class="col-12 text-center">
-                <a href="ajoutReponse.php?rep=1&id=<?php echo $idURL; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary btn-lg" value="Ajouter une réponse"></input></a>
+                <a href="ajoutReponse.php?rep=1&id=<?php echo $idURL; ?><?= ($_GET['admin'] == "05lrM3") ? "&admin=05lrM3" : "" ?>"><input type="submit" name="boutonReponse" class="ecart btn btn-primary btn-lg" value="Ajouter une réponse"></input></a>
             </div>
             <!-- Espace de fin -->
             <div class="col-12 mb-5"></div>

@@ -12,10 +12,9 @@
 <body>
   <!-- Lien vers Bootstrap / Connexion BDD / Entete -->
   <?php
-  session_start();
-  include_once "../controleur/bootstrapCSS.php";
-  include_once "../controleur/bddConnect.php";
-  include "entete.php";
+  include_once "./controleur/bootstrapCSS.php";
+  include_once "./controleur/bddConnect.php";
+  include "./vue/entete.php";
   ?>
   <!-- Fin lien  -->
   <!-- Card contenant -->
@@ -28,7 +27,7 @@
               <!-- Barre recherche -->
               <div class="col-lg-8 ms-lg-5">
                 <h4>Barre de recherche</h4>
-                <form action="listeRecherche.php" method="GET">
+                <form action="./vue/listeRecherche.php" method="GET">
                   <div class="mt-3 col-xs-6 col-sm-12 col-md-4 col-lg-6 my-auto">
                     <div class="input-group">
                       <div class="form-outline">
@@ -151,8 +150,8 @@
                     ?> <br><br>
                     <div class="container">
                       <div class="row-md col-ms-4 mx-auto texte">
-                        <a href="ajoutReponse.php?rep=1&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
-                        <a href="listeReponse.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary mb-2" value="Voir + de réponse"></input></a>
+                        <a href="./vue/ajoutReponse.php?rep=1&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
+                        <a href="./vue/listeReponse.php?id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonVoirPlus" class="centre btn btn-primary mb-2" value="Voir + de réponse"></input></a>
                       </div>
                     </div>
                   <?php
@@ -162,7 +161,7 @@
                   ?>
                     <div class="container">
                       <div class="row-md col-ms-4 mx-auto texte">
-                        <a href="ajoutReponse.php?rep=0&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
+                        <a href="./vue/ajoutReponse.php?rep=0&id=<?php echo $idQuestion; ?>"><input type="submit" name="boutonReponse" class="espace btn btn-primary mb-2" value="Ajouter une réponse"></input></a>
                       </div>
                     </div>
                   <?php
@@ -216,11 +215,11 @@
 
   <!-- Fin footer -->
   <!-- Link js -->
-  <script src="js/searchBar.js"></script>
+  <script src="./vue/js/searchBar.js"></script>
   <!-- link bootstrap -->
   <?php
-  include_once "../controleur/bootstrapJS.php" ?>
+  include_once "./controleur/bootstrapJS.php" ?>
 </body>
-<?php include_once "../vue/footer.php"; ?>
+<?php include_once "./vue/footer.php"; ?>
 
 </html>

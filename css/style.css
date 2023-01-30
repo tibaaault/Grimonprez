@@ -32,6 +32,13 @@ body {
   .ecart {
     margin-top: 10px !important;
   }
+  .ecart2 {
+    margin-top: 20px !important;
+    text-align: start!important;
+  }
+  .none {
+display: none!important;
+  }
 }
 
 @media (min-width: 750px) {
